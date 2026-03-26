@@ -2695,6 +2695,462 @@
                     display: none
                 }
             }
+
+            /* ═══════════════════════════════════════
+   CHEMMOD MODE
+═══════════════════════════════════════ */
+            #cm-palette {
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 148px;
+                background: linear-gradient(180deg,rgba(9,13,20,.99),rgba(5,8,13,.97));
+                border-right: 1px solid var(--border);
+                overflow-y: auto;
+                padding: 10px 8px;
+                scrollbar-width: thin;
+                z-index: 2;
+            }
+
+            #cm-palette::-webkit-scrollbar {
+                width: 2px
+            }
+
+            #cm-canvas {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                cursor: crosshair;
+            }
+
+            #cm-info {
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                width: 210px;
+                background: linear-gradient(180deg,rgba(9,13,20,.99),rgba(5,8,13,.97));
+                border-left: 1px solid var(--border);
+                overflow-y: auto;
+                padding: 14px 12px;
+                scrollbar-width: thin;
+                z-index: 2;
+            }
+
+            #cm-info::-webkit-scrollbar {
+                width: 2px
+            }
+
+            .cm-atom-btn {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                width: 100%;
+                padding: 5px 6px;
+                border-radius: 7px;
+                border: 1px solid transparent;
+                cursor: pointer;
+                background: none;
+                color: var(--text);
+                font-family: var(--mono);
+                font-size: 9px;
+                transition: var(--transition);
+                margin-bottom: 2px;
+                text-align: left;
+            }
+
+            .cm-atom-btn:hover {
+                background: rgba(255,255,255,.04);
+                border-color: var(--border)
+            }
+
+            .cm-atom-btn.selected {
+                border-color: currentColor;
+                background: rgba(255,255,255,.06)
+            }
+
+            .cm-atom-sym {
+                width: 28px;
+                height: 28px;
+                border-radius: 6px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 11px;
+                font-weight: 700;
+                border: 1.5px solid currentColor;
+                flex-shrink: 0;
+                opacity: .85;
+            }
+
+            .cm-bond-btn {
+                width: 100%;
+                padding: 5px 8px;
+                border-radius: 7px;
+                border: 1px solid var(--border);
+                cursor: pointer;
+                background: rgba(255,255,255,.02);
+                color: var(--muted);
+                font-family: var(--mono);
+                font-size: 8px;
+                transition: var(--transition);
+                margin-bottom: 3px;
+                text-align: left;
+            }
+
+            .cm-bond-btn:hover {
+                background: rgba(255,255,255,.05);
+                color: var(--text)
+            }
+
+            .cm-bond-btn.selected {
+                border-color: var(--accent2);
+                color: var(--accent2);
+                background: rgba(91,168,245,.07)
+            }
+
+            /* Compact bond/tool icon pills */
+            .cm-tool-bar {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 4px;
+                padding: 8px 10px 6px;
+            }
+
+            .cm-tool-pill {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2px;
+                padding: 5px 7px;
+                border-radius: 8px;
+                border: 1px solid var(--border);
+                cursor: pointer;
+                background: rgba(255,255,255,.02);
+                color: var(--muted);
+                font-family: var(--mono);
+                transition: var(--transition);
+                min-width: 36px;
+                user-select: none;
+                -webkit-user-select: none;
+            }
+
+            .cm-tool-pill:hover {
+                background: rgba(255,255,255,.06);
+                color: var(--text);
+                border-color: var(--border2)
+            }
+
+            .cm-tool-pill.selected {
+                border-color: var(--accent2);
+                color: var(--accent2);
+                background: rgba(91,168,245,.09)
+            }
+
+            .cm-tool-pill.delete-pill:hover {
+                border-color: rgba(240,68,85,.4);
+                color: var(--danger);
+                background: rgba(240,68,85,.07)
+            }
+
+            .cm-tool-pill.delete-pill.selected {
+                border-color: var(--danger);
+                color: var(--danger);
+                background: rgba(240,68,85,.1)
+            }
+
+            .cm-tool-icon {
+                font-size: 11px;
+                line-height: 1;
+                font-weight: 700;
+                letter-spacing: -1px
+            }
+
+            .cm-tool-label {
+                font-size: 6px;
+                opacity: .6;
+                letter-spacing: .04em;
+                text-transform: uppercase;
+                line-height: 1
+            }
+
+            .cm-tool-divider {
+                width: 1px;
+                background: var(--border);
+                align-self: stretch;
+                margin: 0 2px
+            }
+
+            .cm-ex-btn {
+                width: 100%;
+                padding: 5px 8px;
+                border-radius: 7px;
+                border: 1px solid var(--border);
+                cursor: pointer;
+                background: rgba(255,255,255,.02);
+                color: var(--muted);
+                font-family: var(--mono);
+                font-size: 8px;
+                transition: var(--transition);
+                margin-bottom: 3px;
+                text-align: left;
+            }
+
+            .cm-ex-btn:hover {
+                background: rgba(255,255,255,.05);
+                color: var(--text);
+                border-color: var(--teal)
+            }
+
+            /* ═══════════════════════════════════════
+   ORGANIC CHEMISTRY MODE
+═══════════════════════════════════════ */
+            #organic-wrap {
+                background: var(--bg)
+            }
+
+            #organic-inner {
+                display: flex;
+                height: 100%;
+                overflow: hidden
+            }
+
+            #org-sidebar {
+                width: 180px;
+                min-width: 180px;
+                border-right: 1px solid var(--border);
+                overflow-y: auto;
+                background: linear-gradient(180deg,rgba(9,13,20,.99),rgba(5,8,13,.97));
+                scrollbar-width: thin;
+            }
+
+            #org-sidebar[style*="display: none"] ~ #org-main, #org-sidebar[style*="display:none"] ~ #org-main {
+                flex: 1;
+            }
+
+            #org-sidebar::-webkit-scrollbar {
+                width: 2px
+            }
+
+            .org-family-btn {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                width: 100%;
+                padding: 8px 12px;
+                border: none;
+                background: none;
+                color: var(--muted);
+                cursor: pointer;
+                font-size: 9px;
+                font-family: var(--sans);
+                text-align: left;
+                border-left: 2px solid transparent;
+                transition: var(--transition);
+            }
+
+            .org-family-btn:hover {
+                background: rgba(255,255,255,.03);
+                color: var(--text);
+                border-left-color: var(--border2)
+            }
+
+            .org-family-btn.active {
+                background: rgba(61,207,126,.07);
+                color: var(--accent3);
+                border-left-color: var(--accent3)
+            }
+
+            .org-family-btn .org-family-icon {
+                font-size: 14px;
+                flex-shrink: 0;
+                width: 20px;
+                text-align: center
+            }
+
+            #org-main {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                min-width: 0
+            }
+
+            #org-header {
+                padding: 12px 16px 8px;
+                border-bottom: 1px solid var(--border);
+                flex-shrink: 0
+            }
+
+            #org-series-wrap {
+                padding: 10px 14px;
+                border-bottom: 1px solid var(--border);
+                flex-shrink: 0;
+                overflow-x: auto;
+                scrollbar-width: thin;
+            }
+
+            #org-series-wrap::-webkit-scrollbar {
+                height: 3px
+            }
+
+            #org-series-scroll {
+                display: flex;
+                gap: 6px;
+                min-width: max-content
+            }
+
+            .org-series-card {
+                flex-shrink: 0;
+                padding: 6px 10px;
+                border-radius: 8px;
+                border: 1px solid var(--border);
+                cursor: pointer;
+                background: rgba(255,255,255,.02);
+                transition: var(--transition);
+                min-width: 68px;
+            }
+
+            .org-series-card:hover {
+                border-color: var(--border2);
+                background: rgba(255,255,255,.04)
+            }
+
+            .org-series-card.active {
+                border-color: var(--accent3);
+                background: rgba(61,207,126,.08)
+            }
+
+            .org-series-card-name {
+                font-family: var(--mono);
+                font-size: 8px;
+                font-weight: 700;
+                color: var(--text)
+            }
+
+            .org-series-card-formula {
+                font-family: var(--mono);
+                font-size: 9px;
+                color: var(--muted);
+                margin-top: 2px
+            }
+
+            #org-detail {
+                flex: 1;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0;
+                overflow: hidden
+            }
+
+            #org-detail-left {
+                border-right: 1px solid var(--border);
+                overflow-y: auto;
+                padding: 14px;
+                scrollbar-width: thin
+            }
+
+            #org-detail-left::-webkit-scrollbar {
+                width: 2px
+            }
+
+            #org-detail-right {
+                overflow-y: auto;
+                padding: 14px;
+                scrollbar-width: thin
+            }
+
+            #org-detail-right::-webkit-scrollbar {
+                width: 2px
+            }
+
+            #org-svg-area {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 12px
+            }
+
+            #org-props-table {
+                font-size: 9px;
+                color: var(--muted)
+            }
+
+            .org-prop-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 4px 0;
+                border-bottom: 1px solid rgba(255,255,255,.04)
+            }
+
+            .org-prop-label {
+                color: var(--muted);
+                font-family: var(--mono);
+                font-size: 8px
+            }
+
+            .org-prop-val {
+                color: var(--text);
+                font-family: var(--mono);
+                font-size: 9px;
+                font-weight: 600
+            }
+
+            .org-rx-card {
+                background: rgba(255,255,255,.02);
+                border: 1px solid var(--border);
+                border-radius: 8px;
+                padding: 10px;
+                margin-bottom: 7px
+            }
+
+            .org-rx-card-title {
+                font-family: var(--mono);
+                font-size: 9px;
+                font-weight: 700;
+                color: var(--text);
+                margin-bottom: 4px
+            }
+
+            .org-rx-card-eq {
+                font-family: var(--mono);
+                font-size: 8px;
+                color: var(--accent2);
+                margin-bottom: 4px;
+                line-height: 1.5
+            }
+
+            .org-rx-card-obs {
+                font-size: 8.5px;
+                color: var(--muted);
+                line-height: 1.6
+            }
+
+            .org-naming-box {
+                background: rgba(91,168,245,.06);
+                border: 1px solid rgba(91,168,245,.18);
+                border-radius: 8px;
+                padding: 10px;
+                margin-top: 8px
+            }
+
+            .org-naming-title {
+                font-family: var(--mono);
+                font-size: 8px;
+                color: var(--accent2);
+                font-weight: 700;
+                margin-bottom: 6px
+            }
+
+            .org-naming-rule {
+                font-size: 8.5px;
+                color: var(--muted);
+                line-height: 1.7
+            }
         </style>
     </head>
     <body>
@@ -2732,6 +3188,8 @@
                             <button class="mbtn" id="mode-flame" onclick="setMode('flame')" title="Flame test for metal ions">🔥 Flame</button>
                             <button class="mbtn" id="mode-titr" onclick="setMode('titr')" title="Acid-base & redox titrations">🧫 Titrate</button>
                             <button class="mbtn" id="mode-elec" onclick="setMode('elec')" title="Electrolysis">⚡ Electrolysis</button>
+                            <button class="mbtn" id="mode-chemmod" onclick="setMode('chemmod')" title="Build molecules and show intermolecular forces" style="color:var(--teal)">⬡ ChemMod</button>
+                            <button class="mbtn" id="mode-organic" onclick="setMode('organic')" title="Organic chemistry families and reactions" style="color:var(--accent3)">🌿 Organic</button>
                         </div>
                         <div class="tb-spacer"></div>
                         <div id="ph-box">
@@ -2756,7 +3214,7 @@
                             🔊 <span class="tbtn-label">SOUND: ON</span>
                         </button>
                         <button class="tbtn danger" onclick="clearVessel()">
-                            🗑 <span class="tbtn-label">CLEAR VESSEL</span>
+                            🗑 <span class="tbtn-label">CLEAR</span>
                         </button>
                         <button class="tbtn" onclick="toggleReactivityPanel()">
                             📊 <span class="tbtn-label">REACTIVITY</span>
@@ -3239,6 +3697,87 @@
                         </div>
                         <div id="nb-body">
                             <div class="nb-empty">No observations yet...</div>
+                        </div>
+                    </div>
+                    <!-- ═══════════════════════════════════════════════════ -->
+                    <!-- CHEMMOD MODE                                        -->
+                    <!-- ═══════════════════════════════════════════════════ -->
+                    <div id="chemmod-wrap" style="display:none;position:absolute;inset:0;z-index:6;overflow:hidden">
+                        <!-- Palette -->
+                        <div id="cm-palette">
+                            <div style="font-family:var(--mono);font-size:7px;color:var(--dim);letter-spacing:.1em;margin-bottom:6px;padding:0 2px">ATOMS</div>
+                            <div id="cm-atom-btns"></div>
+                            <div style="font-family:var(--mono);font-size:7px;color:var(--dim);letter-spacing:.1em;margin:10px 0 6px;padding:0 2px">BONDS</div>
+                            <div id="cm-bond-btns"></div>
+                            <div style="font-family:var(--mono);font-size:7px;color:var(--dim);letter-spacing:.1em;margin:10px 0 6px;padding:0 2px">FORCES</div>
+                            <div id="cm-force-btns"></div>
+                            <div style="height:1px;background:var(--border);margin:10px 0"></div>
+                            <div style="font-family:var(--mono);font-size:7px;color:var(--dim);letter-spacing:.1em;margin-bottom:6px">EXAMPLES</div>
+                            <div id="cm-example-btns"></div>
+                            <div style="height:1px;background:var(--border);margin:10px 0"></div>
+                            <button id="cm-clear-btn" onclick="cmClear()" style="width:100%;background:rgba(255,79,94,.08);border:1px solid rgba(255,79,94,.2);color:var(--danger);font-family:var(--mono);font-size:8px;padding:6px;border-radius:7px;cursor:pointer">🗑 Clear All</button>
+                        </div>
+                        <!-- Canvas -->
+                        <canvas id="cm-canvas"></canvas>
+                        <!-- Info panel -->
+                        <div id="cm-info">
+                            <div style="font-family:var(--mono);font-size:7px;color:var(--dim);letter-spacing:.1em;margin-bottom:8px">MOLECULE INFO</div>
+                            <div id="cm-mol-name" style="font-family:var(--mono);font-size:12px;font-weight:700;color:var(--accent2);margin-bottom:4px">—</div>
+                            <div id="cm-mol-formula" style="font-family:var(--mono);font-size:10px;color:var(--text);margin-bottom:8px"></div>
+                            <div id="cm-mol-desc" style="font-size:9px;color:var(--muted);line-height:1.7;margin-bottom:10px"></div>
+                            <div id="cm-valency-warn" style="font-size:9px;color:var(--danger);line-height:1.6;min-height:16px"></div>
+                            <div style="height:1px;background:var(--border);margin:10px 0"></div>
+                            <div style="font-family:var(--mono);font-size:7px;color:var(--dim);letter-spacing:.1em;margin-bottom:6px">HOW TO USE</div>
+                            <div style="font-size:8.5px;color:var(--muted);line-height:1.8">
+                                <b style="color:var(--text)">1.</b>
+                                Click an atom in the palette<br>
+                                <b style="color:var(--text)">2.</b>
+                                Click on the canvas to place it<br>
+                                <b style="color:var(--text)">3.</b>
+                                Hover near an atom edge until you see a connector cursor<br>
+                                <b style="color:var(--text)">4.</b>
+                                Click &amp;drag to another atom to bond them<br>
+                                <b style="color:var(--text)">5.</b>
+                                Select a bond type first to choose single/double/triple<br>
+                                <b style="color:var(--text)">6.</b>
+                                Right-click or press Delete to remove selected atom/bond
+        
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ═══════════════════════════════════════════════════ -->
+                    <!-- ORGANIC CHEMISTRY MODE                              -->
+                    <!-- ═══════════════════════════════════════════════════ -->
+                    <div id="organic-wrap" style="display:none;position:absolute;inset:0;z-index:6;overflow:hidden;background:var(--bg)">
+                        <div id="organic-inner">
+                            <!-- Sidebar: family list -->
+                            <div id="org-sidebar">
+                                <div style="font-family:var(--mono);font-size:7px;color:var(--dim);letter-spacing:.1em;padding:12px 12px 6px">ORGANIC FAMILIES</div>
+                                <div id="org-family-list"></div>
+                            </div>
+                            <!-- Main display -->
+                            <div id="org-main">
+                                <div id="org-header">
+                                    <div id="org-family-title" style="font-family:var(--mono);font-size:14px;font-weight:700;color:var(--accent2)">Select a family →</div>
+                                    <div id="org-family-subtitle" style="font-family:var(--mono);font-size:9px;color:var(--muted);margin-top:2px"></div>
+                                </div>
+                                <!-- Series scroller -->
+                                <div id="org-series-wrap">
+                                    <div id="org-series-scroll"></div>
+                                </div>
+                                <!-- Detail area -->
+                                <div id="org-detail">
+                                    <div id="org-detail-left">
+                                        <div id="org-svg-area"></div>
+                                        <div id="org-props-table"></div>
+                                    </div>
+                                    <div id="org-detail-right">
+                                        <div id="org-reactions-title" style="font-family:var(--mono);font-size:8px;color:var(--dim);letter-spacing:.08em;margin-bottom:8px">KEY REACTIONS</div>
+                                        <div id="org-reactions-list"></div>
+                                        <div id="org-naming-box"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -21522,7 +22061,7 @@
             var currentMode = 'mix';
             function setMode(m) {
                 currentMode = m;
-                ['mix', 'dist', 'flame', 'titr', 'elec'].forEach(function(x) {
+                ['mix', 'dist', 'flame', 'titr', 'elec', 'chemmod', 'organic'].forEach(function(x) {
                     var el = document.getElementById('mode-' + x);
                     if (el)
                         el.classList.toggle('active', x === m);
@@ -21532,6 +22071,8 @@
                 document.getElementById('flame-wrap').style.display = m === 'flame' ? 'flex' : 'none';
                 document.getElementById('titr-wrap').style.display = m === 'titr' ? 'flex' : 'none';
                 document.getElementById('elec-wrap').style.display = m === 'elec' ? 'flex' : 'none';
+                document.getElementById('chemmod-wrap').style.display = m === 'chemmod' ? 'block' : 'none';
+                document.getElementById('organic-wrap').style.display = m === 'organic' ? 'block' : 'none';
                 document.getElementById('nb').style.display = (m === 'mix' && settings.notebook) ? 'flex' : 'none';
                 // Only clear vessel when leaving mix mode
                 if (m !== 'mix') {
@@ -21547,19 +22088,100 @@
                 if (m === 'elec') {
                     setupElectrolysis();
                 }
+                if (m === 'chemmod') {
+                    initChemMod();
+                }
+                if (m === 'organic') {
+                    initOrganic();
+                }
                 if (m === 'flame') {
                     document.getElementById('flame-result').textContent = '— Drag a metal onto the wire loop —';
                     document.getElementById('flame-result').style.color = 'var(--dim)';
                     document.getElementById('flame-obs').textContent = '';
                 }
+
+                // Bunsen button: show in mix and flame modes
+                var bunBtn = document.getElementById('btn-bun');
+                if (bunBtn)
+                    bunBtn.style.display = (m === 'mix' || m === 'flame' || m === 'dist') ? '' : 'none';
+
+                // ChemMod: hide built-in palette, use main sidebar instead
+                var cmPal = document.getElementById('cm-palette');
+                var cmCv = document.getElementById('cm-canvas');
+                if (m === 'chemmod') {
+                    if (cmPal)
+                        cmPal.style.display = 'none';
+                    if (cmCv)
+                        cmCv.style.left = '0';
+                    setSidebarSpecialMode('⬡ CHEMMOD');
+                    setTimeout(cmResizeCanvas, 50);
+                } else {
+                    if (cmPal)
+                        cmPal.style.display = '';
+                    if (cmCv)
+                        cmCv.style.left = '';
+                }
+
+                // Organic: hide built-in sidebar, use main sidebar instead
+                var orgSb = document.getElementById('org-sidebar');
+                if (m === 'organic') {
+                    if (orgSb)
+                        orgSb.style.display = 'none';
+                    setSidebarSpecialMode('🌿 ORGANIC');
+                } else {
+                    if (orgSb)
+                        orgSb.style.display = '';
+                }
+
+                // Restore normal sidebar state when switching to non-special modes
+                if (m !== 'chemmod' && m !== 'organic') {
+                    setSidebarSpecialMode(null);
+                }
+
+                buildSidebar();
+
                 var msgs = {
                     mix: 'Drag a substance into the beaker  •  Tap \u2630 for substances',
                     dist: 'Drag a liquid into the flask, then heat with Bunsen',
                     flame: 'Drag a metal/salt onto the wire loop, then ignite',
                     titr: 'Select a titration type  •  Click \u25bc Add 0.5 mL to drip titrant into flask',
-                    elec: 'Select an electrolyte  •  Click \u26a1 Apply Current to run electrolysis'
+                    elec: 'Select an electrolyte  •  Click \u26a1 Apply Current to run electrolysis',
+                    chemmod: 'Click an element to place it  •  Use sidebar for atoms, bonds & examples',
+                    organic: 'Select an organic family from the sidebar  •  Browse the homologous series'
                 };
                 setInstr(msgs[m] || '');
+            }
+
+            // Show/hide sidebar sections for special modes (chemmod, organic)
+            function setSidebarSpecialMode(title) {
+                var searchWrap = document.getElementById('sb-search-wrap');
+                var tabBar = document.querySelector('#sidebar .tab-bar');
+                var sbCount = document.getElementById('sb-count');
+                var sbCats = document.getElementById('sb-cats');
+                var sbTitle = document.getElementById('sb-head-title');
+                if (title) {
+                    if (searchWrap)
+                        searchWrap.style.display = 'none';
+                    if (tabBar)
+                        tabBar.style.display = 'none';
+                    if (sbCount)
+                        sbCount.style.display = 'none';
+                    if (sbCats)
+                        sbCats.style.display = 'none';
+                    if (sbTitle)
+                        sbTitle.textContent = title;
+                } else {
+                    if (searchWrap)
+                        searchWrap.style.display = '';
+                    if (tabBar)
+                        tabBar.style.display = '';
+                    if (sbCount)
+                        sbCount.style.display = '';
+                    if (sbCats)
+                        sbCats.style.display = '';
+                    if (sbTitle)
+                        sbTitle.textContent = '⚗ SUBSTANCES';
+                }
             }
 
             // ══════════════════════════════════════════════════════
@@ -22118,6 +22740,14 @@
             // ────────────────────────────────────────────────────
 
             function buildSidebar() {
+                if (currentMode === 'chemmod') {
+                    buildCmSidebar();
+                    return;
+                }
+                if (currentMode === 'organic') {
+                    buildOrgSidebar();
+                    return;
+                }
                 if (currentTab === 'biology') {
                     buildBioSidebar();
                     return;
@@ -22183,6 +22813,291 @@
                     row.addEventListener('mouseleave', hideTip);
                     list.appendChild(row);
                 });
+            }
+
+            // ── ChemMod sidebar: bonds at top (compact icons), then atoms, then examples ─
+            function buildCmSidebar() {
+                var list = document.getElementById('sb-list');
+                list.innerHTML = '';
+
+                function sectionHeader(txt) {
+                    var h = document.createElement('div');
+                    h.style.cssText = 'font-family:var(--mono);font-size:7px;color:var(--dim);letter-spacing:.1em;padding:10px 10px 4px;text-transform:uppercase';
+                    h.textContent = txt;
+                    list.appendChild(h);
+                }
+
+                // ── BONDS & TOOLS (compact icon pills at top) ──
+                sectionHeader('BONDS & TOOLS');
+
+                var toolBar = document.createElement('div');
+                toolBar.className = 'cm-tool-bar';
+
+                // Bond tools: icon, label, bond id
+                var bondTools = [{
+                    icon: '—',
+                    label: 'Single',
+                    id: 'single',
+                    title: 'Single covalent bond — share 1 pair of electrons'
+                }, {
+                    icon: '=',
+                    label: 'Double',
+                    id: 'double',
+                    title: 'Double bond — σ + π'
+                }, {
+                    icon: '≡',
+                    label: 'Triple',
+                    id: 'triple',
+                    title: 'Triple bond — σ + 2π'
+                }, {
+                    icon: '⊕⊖',
+                    label: 'Ionic',
+                    id: 'ionic',
+                    title: 'Ionic bond — electron transfer'
+                }, ];
+
+                var divider = document.createElement('div');
+                divider.className = 'cm-tool-divider';
+
+                bondTools.forEach(function(bt) {
+                    var pill = document.createElement('div');
+                    pill.className = 'cm-tool-pill';
+                    pill.id = 'sb-cm-bbtn-' + bt.id;
+                    pill.title = bt.title;
+                    pill.innerHTML = '<span class="cm-tool-icon">' + bt.icon + '</span><span class="cm-tool-label">' + bt.label + '</span>';
+                    pill.onclick = function() {
+                        cmSelectBond(bt.id);
+                    }
+                    ;
+                    if (CM.selectedBond === bt.id)
+                        pill.classList.add('selected');
+                    toolBar.appendChild(pill);
+                });
+
+                // Divider
+                var div1 = document.createElement('div');
+                div1.className = 'cm-tool-divider';
+                toolBar.appendChild(div1);
+
+                // Forces
+                var forceTools = [{
+                    icon: '· ·',
+                    label: 'H-bond',
+                    id: 'hbond',
+                    title: 'Hydrogen bond — δ+H to lone pair on N,O,F'
+                }, {
+                    icon: '~~~',
+                    label: 'vdW',
+                    id: 'vdw',
+                    title: 'Van der Waals — weak temporary dipole'
+                }, {
+                    icon: '→',
+                    label: 'Dative',
+                    id: 'dative',
+                    title: 'Dative/coordinate bond — both electrons from same atom'
+                }, ];
+                forceTools.forEach(function(bt) {
+                    var pill = document.createElement('div');
+                    pill.className = 'cm-tool-pill';
+                    pill.id = 'sb-cm-bbtn-' + bt.id;
+                    pill.title = bt.title;
+                    pill.innerHTML = '<span class="cm-tool-icon" style="font-size:9px">' + bt.icon + '</span><span class="cm-tool-label">' + bt.label + '</span>';
+                    pill.onclick = function() {
+                        cmSelectBond(bt.id);
+                    }
+                    ;
+                    if (CM.selectedBond === bt.id)
+                        pill.classList.add('selected');
+                    toolBar.appendChild(pill);
+                });
+
+                // Divider
+                var div2 = document.createElement('div');
+                div2.className = 'cm-tool-divider';
+                toolBar.appendChild(div2);
+
+                // Delete tool
+                var delPill = document.createElement('div');
+                delPill.className = 'cm-tool-pill delete-pill';
+                delPill.id = 'sb-cm-delete-tool';
+                delPill.title = 'Delete mode — click an atom to remove it';
+                delPill.innerHTML = '<span class="cm-tool-icon">🗑</span><span class="cm-tool-label">Delete</span>';
+                delPill.onclick = function() {
+                    cmDeleteMode = !cmDeleteMode;
+                    if (cmDeleteMode) {
+                        cmSelectedEl = null;
+                        CM.bondingFrom = null;
+                        document.querySelectorAll('.cm-tool-pill').forEach(function(p) {
+                            p.classList.remove('selected');
+                        });
+                        delPill.classList.add('selected');
+                        document.getElementById('cm-canvas').style.cursor = 'not-allowed';
+                    } else {
+                        delPill.classList.remove('selected');
+                        document.getElementById('cm-canvas').style.cursor = 'default';
+                    }
+                }
+                ;
+                if (cmDeleteMode)
+                    delPill.classList.add('selected');
+                toolBar.appendChild(delPill);
+
+                list.appendChild(toolBar);
+
+                // ── ATOMS ──
+                sectionHeader('ATOMS');
+                var allAtomSyms = CM_ATOMS.map(function(a) {
+                    return a.sym;
+                });
+                var atomDefs = CM_ATOMS.slice();
+                ELEMENTS.forEach(function(el) {
+                    if (allAtomSyms.indexOf(el.sym) < 0) {
+                        atomDefs.push({
+                            sym: el.sym,
+                            name: el.name,
+                            val: 4,
+                            col: el.col || '#94a3b8',
+                            r: 20,
+                            _fromElements: true
+                        });
+                    }
+                });
+
+                atomDefs.forEach(function(a) {
+                    var btn = document.createElement('div');
+                    btn.className = 'chem-row';
+                    btn.id = 'sb-cm-abtn-' + a.sym;
+                    var symEl = document.createElement('div');
+                    symEl.className = 'chem-sym';
+                    symEl.style.cssText = 'color:' + a.col + ';border-color:' + a.col + '60;font-size:10px;font-weight:700';
+                    symEl.textContent = a.sym;
+                    var info = document.createElement('div');
+                    info.className = 'chem-info';
+                    info.innerHTML = '<div class="chem-formula" style="color:' + a.col + '">' + a.sym + '</div><div class="chem-name">' + (a.name || a.sym) + (a.val ? ' · val:' + a.val : '') + '</div>';
+                    btn.appendChild(symEl);
+                    btn.appendChild(info);
+                    btn.onclick = function() {
+                        cmSelectAndPlace(a);
+                    }
+                    ;
+                    if (a.sym === (cmSelectedEl && cmSelectedEl.sym))
+                        btn.style.background = 'rgba(255,255,255,.06)';
+                    list.appendChild(btn);
+                });
+
+                // ── EXAMPLES ──
+                sectionHeader('EXAMPLES');
+                CM_EXAMPLES.forEach(function(ex, i) {
+                    var btn = document.createElement('button');
+                    btn.className = 'cm-ex-btn';
+                    btn.textContent = ex.name;
+                    btn.style.cssText = 'display:block;width:calc(100% - 20px);margin:2px 10px;';
+                    btn.onclick = function() {
+                        cmLoadExample(i);
+                    }
+                    ;
+                    list.appendChild(btn);
+                });
+            }
+
+            // Place or select atom from sidebar in chemmod mode
+            function cmSelectAndPlace(atomDef) {
+                // Find or build a full CM_ATOM-style def
+                var def = CM_ATOMS.find(function(a) {
+                    return a.sym === atomDef.sym;
+                });
+                if (!def) {
+                    // Create a temporary def for this element
+                    def = {
+                        sym: atomDef.sym,
+                        name: atomDef.name || atomDef.sym,
+                        val: atomDef.val || 4,
+                        col: atomDef.col || '#94a3b8',
+                        r: 20
+                    };
+                    CM_ATOMS.push(def);
+                    // register so bonding works
+                }
+                cmSelectedEl = def;
+                CM.bondingFrom = null;
+                cmDeleteMode = false;
+                // Clear delete pill highlight
+                var delPill = document.getElementById('sb-cm-delete-tool');
+                if (delPill)
+                    delPill.classList.remove('selected');
+                // Highlight selection in sidebar
+                document.querySelectorAll('[id^="sb-cm-abtn-"]').forEach(function(b) {
+                    b.style.background = '';
+                });
+                var btn = document.getElementById('sb-cm-abtn-' + def.sym);
+                if (btn)
+                    btn.style.background = 'rgba(255,255,255,.08)';
+                // Place atom at canvas centre
+                if (CM.canvas) {
+                    var cx = CM.canvas.width / 2 + (Math.random() - 0.5) * 60;
+                    var cy = CM.canvas.height / 2 + (Math.random() - 0.5) * 60;
+                    var newIdx = CM.atoms.length;
+                    CM.atoms.push({
+                        id: CM.nextId++,
+                        sym: def.sym,
+                        col: def.col,
+                        radius: def.r || 20,
+                        x: cx,
+                        y: cy,
+                        ionic: !!def.ionic,
+                        val: def.val
+                    });
+                    cmLastClickedAtomIdx = newIdx;
+                    cmRender();
+                    cmUpdateInfo(newIdx);
+                }
+                document.getElementById('cm-canvas').style.cursor = 'cell';
+            }
+
+            // ── Organic sidebar: family list in main sidebar ───────────────────────────
+            function buildOrgSidebar() {
+                var list = document.getElementById('sb-list');
+                list.innerHTML = '';
+                if (typeof ORG_FAMILIES === 'undefined')
+                    return;
+                ORG_FAMILIES.forEach(function(f) {
+                    var btn = document.createElement('button');
+                    btn.className = 'org-family-btn';
+                    btn.id = 'sb-orgfam-' + f.id;
+                    btn.style.cssText = 'display:flex;align-items:center;gap:8px;width:100%;padding:8px 12px;border:none;background:none;color:var(--muted);cursor:pointer;font-size:9px;font-family:var(--sans);text-align:left;border-left:2px solid transparent;transition:var(--transition)';
+                    btn.innerHTML = '<span style="font-size:14px;flex-shrink:0;width:20px;text-align:center">' + f.icon + '</span>' + '<span><span style="display:block;font-size:9px;font-weight:600;color:var(--text)">' + f.name + '</span>' + '<span style="font-size:7.5px;color:var(--dim)">' + f.genFormula + '</span></span>';
+                    btn.onclick = function() {
+                        // Highlight active
+                        document.querySelectorAll('[id^="sb-orgfam-"]').forEach(function(b) {
+                            b.style.borderLeftColor = 'transparent';
+                            b.style.color = 'var(--muted)';
+                            b.style.background = '';
+                        });
+                        btn.style.borderLeftColor = f.col;
+                        btn.style.color = f.col;
+                        btn.style.background = 'rgba(255,255,255,.03)';
+                        orgSelectFamily(f.id);
+                        if (window.innerWidth <= 680) {
+                            closeSidebar();
+                        }
+                    }
+                    ;
+                    list.appendChild(btn);
+                });
+                // Auto-highlight current family
+                if (typeof orgCurrentFamily !== 'undefined') {
+                    var cur = document.getElementById('sb-orgfam-' + orgCurrentFamily);
+                    if (cur) {
+                        var f2 = ORG_FAMILIES.find(function(f) {
+                            return f.id === orgCurrentFamily;
+                        });
+                        if (f2) {
+                            cur.style.borderLeftColor = f2.col;
+                            cur.style.color = f2.col;
+                            cur.style.background = 'rgba(255,255,255,.03)';
+                        }
+                    }
+                }
             }
 
             // ══════════════════════════════════════════════════════
@@ -22618,6 +23533,12 @@
               , acTimer = null;
 
             function clearVessel() {
+                // In chemmod mode, clear the canvas atoms/bonds
+                if (currentMode === 'chemmod') {
+                    cmClear();
+                    toast('Canvas cleared', '#384858');
+                    return;
+                }
                 vesselContents = [];
                 document.getElementById('bk-liquid').innerHTML = '';
                 closeRx();
@@ -23148,6 +24069,15 @@
                     var over = pos.clientX >= r.left && pos.clientX <= r.right && pos.clientY >= r.top && pos.clientY <= r.bottom;
                     el.style.outline = (over && currentMode === m) ? '1px solid rgba(91,168,245,.4)' : '';
                 });
+                // Highlight ChemMod canvas on drag
+                if (currentMode === 'chemmod') {
+                    var cmCv = document.getElementById('cm-canvas');
+                    if (cmCv) {
+                        var cr = cmCv.getBoundingClientRect();
+                        var over = pos.clientX >= cr.left && pos.clientX <= cr.right && pos.clientY >= cr.top && pos.clientY <= cr.bottom;
+                        cmCv.style.outline = over ? '2px solid rgba(91,168,245,.5)' : '';
+                    }
+                }
             }
             function onUp(e) {
                 document.removeEventListener('mousemove', onMove);
@@ -23157,8 +24087,58 @@
                 var pos = e.changedTouches ? e.changedTouches[0] : e;
                 ghostEl.style.display = 'none';
                 document.getElementById('vessel-drop').classList.remove('hl');
+                // Clear any canvas highlight outlines
+                var cmCvClr = document.getElementById('cm-canvas');
+                if (cmCvClr)
+                    cmCvClr.style.outline = '';
+                ['dist', 'flame', 'titr', 'elec'].forEach(function(m) {
+                    var el = document.getElementById(m + '-wrap');
+                    if (el)
+                        el.style.outline = '';
+                });
                 var dropped = false;
-                if (currentMode === 'mix') {
+                if (currentMode === 'chemmod') {
+                    // Drop element onto ChemMod canvas
+                    var cmCv = document.getElementById('cm-canvas');
+                    if (cmCv) {
+                        var cr = cmCv.getBoundingClientRect();
+                        if (pos.clientX >= cr.left && pos.clientX <= cr.right && pos.clientY >= cr.top && pos.clientY <= cr.bottom) {
+                            var cx = pos.clientX - cr.left
+                              , cy = pos.clientY - cr.top;
+                            // Find atom def
+                            var def = CM_ATOMS.find(function(a) {
+                                return a.sym === dragSub.sym || a.sym === dragSub.id;
+                            });
+                            if (!def && dragSub.sym) {
+                                def = {
+                                    sym: dragSub.sym,
+                                    name: dragSub.name || dragSub.sym,
+                                    val: 4,
+                                    col: dragSub.col || '#94a3b8',
+                                    r: 20
+                                };
+                                CM_ATOMS.push(def);
+                            }
+                            if (def) {
+                                var newIdx = CM.atoms.length;
+                                CM.atoms.push({
+                                    id: CM.nextId++,
+                                    sym: def.sym,
+                                    col: def.col,
+                                    radius: def.r,
+                                    x: cx,
+                                    y: cy,
+                                    ionic: !!def.ionic,
+                                    val: def.val
+                                });
+                                cmLastClickedAtomIdx = newIdx;
+                                cmRender();
+                                cmUpdateInfo(newIdx);
+                                dropped = true;
+                            }
+                        }
+                    }
+                } else if (currentMode === 'mix') {
                     var vr = document.getElementById('vessel-drop').getBoundingClientRect();
                     dropped = pos.clientX >= vr.left && pos.clientX <= vr.right && pos.clientY >= vr.top && pos.clientY <= vr.bottom;
                 } else if (currentMode === 'dist') {
@@ -28455,6 +29435,2271 @@
             function openQuizManual() {
                 var q = QUIZ_BANK[Math.floor(Math.random() * QUIZ_BANK.length)];
                 openQuiz(q);
+            }
+
+            // ═══════════════════════════════════════════════════════════════════
+            // ███████  CHEMMOD MODE  ███████████████████████████████████████████
+            // ═══════════════════════════════════════════════════════════════════
+            var CM = {
+                atoms: [],
+                // {id, el, x, y, radius}
+                bonds: [],
+                // {id, a, b, type}  type: single|double|triple|ionic|hbond|vdw
+                selectedAtom: null,
+                selectedBond: 'single',
+                selectedForce: null,
+                dragAtom: null,
+                dragOffset: {
+                    x: 0,
+                    y: 0
+                },
+                hoveredAtom: null,
+                bondingFrom: null,
+                canvas: null,
+                ctx: null,
+                nextId: 1,
+                initialized: false
+            };
+
+            // Atom definitions: symbol, valency, color, radius
+            var CM_ATOMS = [{
+                sym: 'H',
+                name: 'Hydrogen',
+                val: 1,
+                col: '#79c0ff',
+                r: 14
+            }, {
+                sym: 'C',
+                name: 'Carbon',
+                val: 4,
+                col: '#94a3b8',
+                r: 20
+            }, {
+                sym: 'N',
+                name: 'Nitrogen',
+                val: 3,
+                col: '#60a5fa',
+                r: 19
+            }, {
+                sym: 'O',
+                name: 'Oxygen',
+                val: 2,
+                col: '#f87171',
+                r: 18
+            }, {
+                sym: 'F',
+                name: 'Fluorine',
+                val: 1,
+                col: '#bef264',
+                r: 16
+            }, {
+                sym: 'Cl',
+                name: 'Chlorine',
+                val: 1,
+                col: '#4ade80',
+                r: 23
+            }, {
+                sym: 'Br',
+                name: 'Bromine',
+                val: 1,
+                col: '#b45309',
+                r: 26
+            }, {
+                sym: 'I',
+                name: 'Iodine',
+                val: 1,
+                col: '#a78bfa',
+                r: 29
+            }, {
+                sym: 'S',
+                name: 'Sulfur',
+                val: 2,
+                col: '#fbbf24',
+                r: 24
+            }, {
+                sym: 'P',
+                name: 'Phosphorus',
+                val: 3,
+                col: '#fb923c',
+                r: 26
+            }, {
+                sym: 'Na',
+                name: 'Sodium',
+                val: 1,
+                col: '#f5c518',
+                r: 27,
+                ionic: true
+            }, {
+                sym: 'K',
+                name: 'Potassium',
+                val: 1,
+                col: '#da77f2',
+                r: 30,
+                ionic: true
+            }, {
+                sym: 'Mg',
+                name: 'Magnesium',
+                val: 2,
+                col: '#86efac',
+                r: 24,
+                ionic: true
+            }, {
+                sym: 'Ca',
+                name: 'Calcium',
+                val: 2,
+                col: '#fdba74',
+                r: 27,
+                ionic: true
+            }, {
+                sym: 'Al',
+                name: 'Aluminium',
+                val: 3,
+                col: '#93c5fd',
+                r: 22,
+                ionic: true
+            }, {
+                sym: 'Fe',
+                name: 'Iron',
+                val: 2,
+                col: '#c2850a',
+                r: 24,
+                ionic: true
+            }, ];
+
+            // Bond types
+            var CM_BOND_TYPES = [{
+                id: 'single',
+                label: '— Single bond',
+                desc: 'Share 1 pair of electrons (σ bond)'
+            }, {
+                id: 'double',
+                label: '═ Double bond',
+                desc: 'Share 2 pairs (σ + π bond)'
+            }, {
+                id: 'triple',
+                label: '≡ Triple bond',
+                desc: 'Share 3 pairs (σ + 2π bonds)'
+            }, {
+                id: 'ionic',
+                label: '⊕⊖ Ionic',
+                desc: 'Electron transfer (metal + non-metal)'
+            }, {
+                id: 'hbond',
+                label: '· · H-bond',
+                desc: 'δ+ H to lone pair on N, O or F'
+            }, {
+                id: 'vdw',
+                label: '~ Van der Waals',
+                desc: 'Weak temporary dipole forces'
+            }, {
+                id: 'dative',
+                label: '→ Dative/coord.',
+                desc: 'Both electrons from same atom'
+            }, ];
+
+            // Forbidden bonding combinations (based on real chemistry)
+            var CM_FORBIDDEN = {
+                'F-F': 'F-F bond is extremely unstable — F₂ is highly reactive and dangerous',
+                'Ne-*': 'Noble gases do not form bonds under normal conditions',
+                'He-*': 'Noble gases do not form bonds under normal conditions',
+                'Ar-*': 'Noble gases do not form bonds under normal conditions',
+            };
+
+            // Pre-built molecule examples
+            var CM_EXAMPLES = [{
+                name: 'H₂O (Water)',
+                atoms: [{
+                    sym: 'O',
+                    x: 200,
+                    y: 200
+                }, {
+                    sym: 'H',
+                    x: 160,
+                    y: 240
+                }, {
+                    sym: 'H',
+                    x: 240,
+                    y: 240
+                }],
+                bonds: [{
+                    a: 0,
+                    b: 1,
+                    type: 'single'
+                }, {
+                    a: 0,
+                    b: 2,
+                    type: 'single'
+                }],
+                desc: 'Bent molecule (104.5°). Polar covalent bonds. Strong hydrogen bonding between molecules explains its high boiling point (100°C).'
+            }, {
+                name: 'CO₂',
+                atoms: [{
+                    sym: 'O',
+                    x: 140,
+                    y: 200
+                }, {
+                    sym: 'C',
+                    x: 220,
+                    y: 200
+                }, {
+                    sym: 'O',
+                    x: 300,
+                    y: 200
+                }],
+                bonds: [{
+                    a: 0,
+                    b: 1,
+                    type: 'double'
+                }, {
+                    a: 1,
+                    b: 2,
+                    type: 'double'
+                }],
+                desc: 'Linear molecule. Non-polar overall (symmetrical). Greenhouse gas — absorbs infrared radiation.'
+            }, {
+                name: 'CH₄ (Methane)',
+                atoms: [{
+                    sym: 'C',
+                    x: 220,
+                    y: 200
+                }, {
+                    sym: 'H',
+                    x: 180,
+                    y: 155
+                }, {
+                    sym: 'H',
+                    x: 260,
+                    y: 155
+                }, {
+                    sym: 'H',
+                    x: 185,
+                    y: 245
+                }, {
+                    sym: 'H',
+                    x: 255,
+                    y: 245
+                }],
+                bonds: [{
+                    a: 0,
+                    b: 1,
+                    type: 'single'
+                }, {
+                    a: 0,
+                    b: 2,
+                    type: 'single'
+                }, {
+                    a: 0,
+                    b: 3,
+                    type: 'single'
+                }, {
+                    a: 0,
+                    b: 4,
+                    type: 'single'
+                }],
+                desc: 'Tetrahedral. 109.5° H-C-H angles. London dispersion forces only (non-polar). Very low boiling point (-162°C).'
+            }, {
+                name: 'NH₃ (Ammonia)',
+                atoms: [{
+                    sym: 'N',
+                    x: 220,
+                    y: 190
+                }, {
+                    sym: 'H',
+                    x: 175,
+                    y: 230
+                }, {
+                    sym: 'H',
+                    x: 265,
+                    y: 230
+                }, {
+                    sym: 'H',
+                    x: 220,
+                    y: 245
+                }],
+                bonds: [{
+                    a: 0,
+                    b: 1,
+                    type: 'single'
+                }, {
+                    a: 0,
+                    b: 2,
+                    type: 'single'
+                }, {
+                    a: 0,
+                    b: 3,
+                    type: 'single'
+                }],
+                desc: 'Trigonal pyramidal. Lone pair on N — acts as nucleophile and base. Hydrogen bonding raises bp to -33°C.'
+            }, {
+                name: 'HCl',
+                atoms: [{
+                    sym: 'H',
+                    x: 170,
+                    y: 200
+                }, {
+                    sym: 'Cl',
+                    x: 260,
+                    y: 200
+                }],
+                bonds: [{
+                    a: 0,
+                    b: 1,
+                    type: 'single'
+                }],
+                desc: 'Polar molecule. Permanent dipole-dipole forces. HCl dissolves in water to give H⁺ + Cl⁻.'
+            }, {
+                name: 'O₂',
+                atoms: [{
+                    sym: 'O',
+                    x: 185,
+                    y: 200
+                }, {
+                    sym: 'O',
+                    x: 255,
+                    y: 200
+                }],
+                bonds: [{
+                    a: 0,
+                    b: 1,
+                    type: 'double'
+                }],
+                desc: 'Non-polar. Two π bonds + one σ bond. Van der Waals forces only. Bp -183°C. Supports combustion.'
+            }, {
+                name: 'N₂',
+                atoms: [{
+                    sym: 'N',
+                    x: 185,
+                    y: 200
+                }, {
+                    sym: 'N',
+                    x: 255,
+                    y: 200
+                }],
+                bonds: [{
+                    a: 0,
+                    b: 1,
+                    type: 'triple'
+                }],
+                desc: 'Very strong triple bond (941 kJ/mol). Non-polar. London dispersion forces only. Very unreactive at room temperature.'
+            }, {
+                name: 'NaCl (Ionic)',
+                atoms: [{
+                    sym: 'Na',
+                    x: 175,
+                    y: 200
+                }, {
+                    sym: 'Cl',
+                    x: 265,
+                    y: 200
+                }],
+                bonds: [{
+                    a: 0,
+                    b: 1,
+                    type: 'ionic'
+                }],
+                desc: 'Ionic bonding: Na donates electron to Cl. Na⁺ and Cl⁻ ions. Giant ionic lattice. Bp 1413°C. Strong electrostatic forces between ions.'
+            }, {
+                name: 'H₂O₂',
+                atoms: [{
+                    sym: 'O',
+                    x: 175,
+                    y: 200
+                }, {
+                    sym: 'O',
+                    x: 265,
+                    y: 200
+                }, {
+                    sym: 'H',
+                    x: 135,
+                    y: 165
+                }, {
+                    sym: 'H',
+                    x: 305,
+                    y: 165
+                }],
+                bonds: [{
+                    a: 0,
+                    b: 1,
+                    type: 'single'
+                }, {
+                    a: 0,
+                    b: 2,
+                    type: 'single'
+                }, {
+                    a: 1,
+                    b: 3,
+                    type: 'single'
+                }],
+                desc: 'Hydrogen peroxide. O-O single bond (weak). Decomposes to water + O₂. Used as bleach and antiseptic.'
+            }, {
+                name: 'C₂H₄ (Ethene)',
+                atoms: [{
+                    sym: 'C',
+                    x: 175,
+                    y: 200
+                }, {
+                    sym: 'C',
+                    x: 265,
+                    y: 200
+                }, {
+                    sym: 'H',
+                    x: 140,
+                    y: 165
+                }, {
+                    sym: 'H',
+                    x: 140,
+                    y: 235
+                }, {
+                    sym: 'H',
+                    x: 300,
+                    y: 165
+                }, {
+                    sym: 'H',
+                    x: 300,
+                    y: 235
+                }],
+                bonds: [{
+                    a: 0,
+                    b: 1,
+                    type: 'double'
+                }, {
+                    a: 0,
+                    b: 2,
+                    type: 'single'
+                }, {
+                    a: 0,
+                    b: 3,
+                    type: 'single'
+                }, {
+                    a: 1,
+                    b: 4,
+                    type: 'single'
+                }, {
+                    a: 1,
+                    b: 5,
+                    type: 'single'
+                }],
+                desc: 'Alkene. Planar molecule (120° angles). π bond prevents rotation. Addition reactions with Br₂, H₂, H₂O. Used to make polyethylene (poly(ethene)).'
+            }, {
+                name: 'C₂H₂ (Ethyne)',
+                atoms: [{
+                    sym: 'C',
+                    x: 175,
+                    y: 200
+                }, {
+                    sym: 'C',
+                    x: 265,
+                    y: 200
+                }, {
+                    sym: 'H',
+                    x: 120,
+                    y: 200
+                }, {
+                    sym: 'H',
+                    x: 320,
+                    y: 200
+                }],
+                bonds: [{
+                    a: 0,
+                    b: 1,
+                    type: 'triple'
+                }, {
+                    a: 0,
+                    b: 2,
+                    type: 'single'
+                }, {
+                    a: 1,
+                    b: 3,
+                    type: 'single'
+                }],
+                desc: 'Alkyne. Linear molecule (180°). Two π bonds. More reactive than ethene. Welding gas. Reactions: addition of 2 × Br₂/HBr/H₂.'
+            }, ];
+
+            var cmSelectedEl = null;
+            var cmInited = false;
+
+            function initChemMod() {
+                if (cmInited)
+                    return;
+                cmInited = true;
+                CM.canvas = document.getElementById('cm-canvas');
+                CM.ctx = CM.canvas.getContext('2d');
+                cmResizeCanvas();
+                window.addEventListener('resize', cmResizeCanvas);
+                buildCmPalette();
+                cmBindEvents();
+                cmRender();
+            }
+
+            function cmResizeCanvas() {
+                var wrap = document.getElementById('chemmod-wrap');
+                if (!wrap)
+                    return;
+                // Palette is now hidden; canvas stretches full width minus right info panel
+                var cmPal = document.getElementById('cm-palette');
+                var palW = (cmPal && cmPal.style.display !== 'none') ? 148 : 0;
+                CM.canvas.width = wrap.clientWidth - palW - 210;
+                CM.canvas.height = wrap.clientHeight;
+                cmRender();
+            }
+
+            function buildCmPalette() {
+                // Atom buttons
+                var ab = document.getElementById('cm-atom-btns');
+                CM_ATOMS.forEach(function(a) {
+                    var btn = document.createElement('button');
+                    btn.className = 'cm-atom-btn';
+                    btn.innerHTML = '<span class="cm-atom-sym" style="color:' + a.col + ';border-color:' + a.col + '">' + a.sym + '</span><span style="flex:1"><span style="font-size:9px;font-weight:700">' + a.sym + '</span><span style="display:block;font-size:7.5px;color:var(--muted)">' + a.name + '<br><span style="color:var(--dim)">val: ' + a.val + '</span></span></span>';
+                    btn.onclick = function() {
+                        cmSelectAtom(a);
+                    }
+                    ;
+                    btn.id = 'cm-abtn-' + a.sym;
+                    ab.appendChild(btn);
+                });
+                // Bond type buttons
+                var bb = document.getElementById('cm-bond-btns');
+                CM_BOND_TYPES.slice(0, 5).forEach(function(b) {
+                    var btn = document.createElement('button');
+                    btn.className = 'cm-bond-btn' + (b.id === 'single' ? ' selected' : '');
+                    btn.textContent = b.label;
+                    btn.title = b.desc;
+                    btn.id = 'cm-bbtn-' + b.id;
+                    btn.onclick = function() {
+                        cmSelectBond(b.id);
+                    }
+                    ;
+                    bb.appendChild(btn);
+                });
+                // Intermolecular force buttons
+                var fb = document.getElementById('cm-force-btns');
+                CM_BOND_TYPES.slice(4).forEach(function(b) {
+                    var btn = document.createElement('button');
+                    btn.className = 'cm-bond-btn';
+                    btn.textContent = b.label;
+                    btn.title = b.desc;
+                    btn.id = 'cm-bbtn-' + b.id;
+                    btn.onclick = function() {
+                        cmSelectBond(b.id);
+                    }
+                    ;
+                    fb.appendChild(btn);
+                });
+                // Example buttons
+                var eb = document.getElementById('cm-example-btns');
+                CM_EXAMPLES.forEach(function(ex, i) {
+                    var btn = document.createElement('button');
+                    btn.className = 'cm-ex-btn';
+                    btn.textContent = ex.name;
+                    btn.onclick = function() {
+                        cmLoadExample(i);
+                    }
+                    ;
+                    eb.appendChild(btn);
+                });
+            }
+
+            function cmSelectAtom(a) {
+                cmSelectedEl = a;
+                CM.bondingFrom = null;
+                CM_ATOMS.forEach(function(x) {
+                    var b = document.getElementById('cm-abtn-' + x.sym);
+                    if (b)
+                        b.classList.remove('selected');
+                });
+                var btn = document.getElementById('cm-abtn-' + a.sym);
+                if (btn)
+                    btn.classList.add('selected');
+                document.getElementById('cm-canvas').style.cursor = 'cell';
+                cmUpdateInfo();
+            }
+
+            function cmSelectBond(type) {
+                CM.selectedBond = type;
+                cmSelectedEl = null;
+                cmDeleteMode = false;
+                CM_ATOMS.forEach(function(x) {
+                    var b = document.getElementById('cm-abtn-' + x.sym);
+                    if (b)
+                        b.classList.remove('selected');
+                });
+                CM_BOND_TYPES.concat(CM_BOND_TYPES).forEach(function(b) {
+                    var btn = document.getElementById('cm-bbtn-' + b.id);
+                    if (btn)
+                        btn.classList.toggle('selected', b.id === type);
+                    var sbtn = document.getElementById('sb-cm-bbtn-' + b.id);
+                    if (sbtn)
+                        sbtn.classList.toggle('selected', b.id === type);
+                });
+                // Clear delete pill selection
+                var delPill = document.getElementById('sb-cm-delete-tool');
+                if (delPill)
+                    delPill.classList.remove('selected');
+                document.getElementById('cm-canvas').style.cursor = 'crosshair';
+            }
+
+            function cmBindEvents() {
+                var cv = CM.canvas;
+                cv.addEventListener('click', cmClick);
+                cv.addEventListener('mousedown', cmMousedown);
+                cv.addEventListener('mousemove', cmMousemove);
+                cv.addEventListener('mouseup', cmMouseup);
+                cv.addEventListener('contextmenu', function(e) {
+                    e.preventDefault();
+                    cmRightClick(e);
+                });
+                cv.addEventListener('dblclick', cmDblClick);
+                document.addEventListener('keydown', function(e) {
+                    if (currentMode !== 'chemmod')
+                        return;
+                    if (e.key === 'Escape') {
+                        CM.bondingFrom = null;
+                        cmSelectedEl = null;
+                        cmRender();
+                    }
+                    if ((e.key === 'Delete' || e.key === 'Backspace') && CM.hoveredAtom != null) {
+                        cmDeleteAtom(CM.hoveredAtom);
+                    }
+                });
+            }
+
+            function cmGetPos(e) {
+                var r = CM.canvas.getBoundingClientRect();
+                return {
+                    x: e.clientX - r.left,
+                    y: e.clientY - r.top
+                };
+            }
+
+            function cmAtomAt(x, y) {
+                for (var i = CM.atoms.length - 1; i >= 0; i--) {
+                    var a = CM.atoms[i];
+                    var dx = x - a.x
+                      , dy = y - a.y;
+                    if (Math.sqrt(dx * dx + dy * dy) <= a.radius + 4)
+                        return i;
+                }
+                return -1;
+            }
+
+            function cmNearEdge(x, y, idx) {
+                var a = CM.atoms[idx];
+                var dx = x - a.x
+                  , dy = y - a.y;
+                var dist = Math.sqrt(dx * dx + dy * dy);
+                return dist >= a.radius - 6 && dist <= a.radius + 10;
+            }
+
+            var cmDragging = -1
+              , cmDragOff = {
+                x: 0,
+                y: 0
+            };
+
+            function cmMousedown(e) {
+                var p = cmGetPos(e);
+                var idx = cmAtomAt(p.x, p.y);
+                if (idx < 0)
+                    return;
+                if (cmDeleteMode)
+                    return;
+                // handled by click
+                if (cmNearEdge(p.x, p.y, idx) && !cmSelectedEl) {
+                    CM.bondingFrom = idx;
+                    return;
+                }
+                if (!cmSelectedEl) {
+                    cmDragging = idx;
+                    cmDragOff = {
+                        x: p.x - CM.atoms[idx].x,
+                        y: p.y - CM.atoms[idx].y
+                    };
+                }
+            }
+
+            function cmMousemove(e) {
+                var p = cmGetPos(e);
+                var idx = cmAtomAt(p.x, p.y);
+                CM.hoveredAtom = idx < 0 ? null : idx;
+                if (cmDragging >= 0) {
+                    CM.atoms[cmDragging].x = p.x - cmDragOff.x;
+                    CM.atoms[cmDragging].y = p.y - cmDragOff.y;
+                    cmRender();
+                    return;
+                }
+                if (CM.bondingFrom !== null) {
+                    cmRender();
+                    // draw preview line
+                    var a = CM.atoms[CM.bondingFrom];
+                    CM.ctx.save();
+                    CM.ctx.strokeStyle = 'rgba(91,168,245,.5)';
+                    CM.ctx.setLineDash([4, 4]);
+                    CM.ctx.lineWidth = 2;
+                    CM.ctx.beginPath();
+                    CM.ctx.moveTo(a.x, a.y);
+                    CM.ctx.lineTo(p.x, p.y);
+                    CM.ctx.stroke();
+                    CM.ctx.restore();
+                    return;
+                }
+                if (idx >= 0 && cmNearEdge(p.x, p.y, idx) && !cmSelectedEl && !cmDeleteMode) {
+                    CM.canvas.style.cursor = 'crosshair';
+                } else if (idx >= 0 && cmDeleteMode) {
+                    CM.canvas.style.cursor = 'not-allowed';
+                } else if (idx >= 0 && !cmDeleteMode) {
+                    CM.canvas.style.cursor = 'grab';
+                } else {
+                    CM.canvas.style.cursor = cmDeleteMode ? 'not-allowed' : (cmSelectedEl ? 'cell' : 'default');
+                }
+                cmRender();
+            }
+
+            function cmMouseup(e) {
+                var p = cmGetPos(e);
+                if (CM.bondingFrom !== null) {
+                    var idx = cmAtomAt(p.x, p.y);
+                    if (idx >= 0 && idx !== CM.bondingFrom) {
+                        cmTryBond(CM.bondingFrom, idx);
+                    }
+                    CM.bondingFrom = null;
+                    cmRender();
+                }
+                cmDragging = -1;
+            }
+
+            function cmClick(e) {
+                var p = cmGetPos(e);
+                var existing = cmAtomAt(p.x, p.y);
+
+                // Delete mode — click any atom to remove it
+                if (cmDeleteMode) {
+                    if (existing >= 0)
+                        cmDeleteAtom(existing);
+                    return;
+                }
+
+                if (!cmSelectedEl) {
+                    // No atom tool selected — just clicking to select/inspect
+                    if (existing >= 0) {
+                        cmLastClickedAtomIdx = existing;
+                        cmUpdateInfo(existing);
+                    } else {
+                        // Clicked empty space — clear formula display
+                        cmLastClickedAtomIdx = -1;
+                        document.getElementById('cm-mol-formula').textContent = '';
+                        document.getElementById('cm-mol-name').textContent = '—';
+                        document.getElementById('cm-mol-desc').textContent = '';
+                    }
+                    return;
+                }
+                if (existing >= 0)
+                    return;
+                // don't place on top
+                // Place atom
+                var def = cmSelectedEl;
+                var newIdx = CM.atoms.length;
+                CM.atoms.push({
+                    id: CM.nextId++,
+                    sym: def.sym,
+                    col: def.col,
+                    radius: def.r,
+                    x: p.x,
+                    y: p.y,
+                    ionic: !!def.ionic,
+                    val: def.val
+                });
+                cmLastClickedAtomIdx = newIdx;
+                cmRender();
+                cmUpdateInfo(newIdx);
+            }
+
+            function cmRightClick(e) {
+                var p = cmGetPos(e);
+                var idx = cmAtomAt(p.x, p.y);
+                if (idx >= 0)
+                    cmDeleteAtom(idx);
+            }
+
+            function cmDblClick(e) {
+                var p = cmGetPos(e);
+                var idx = cmAtomAt(p.x, p.y);
+                if (idx >= 0) {
+                    cmDeleteAtom(idx);
+                }
+            }
+
+            function cmDeleteAtom(idx) {
+                var atomId = CM.atoms[idx].id;
+                CM.bonds = CM.bonds.filter(function(b) {
+                    return b.a !== idx && b.b !== idx;
+                });
+                // Re-index bonds
+                CM.bonds = CM.bonds.map(function(b) {
+                    return {
+                        a: b.a > idx ? b.a - 1 : b.a,
+                        b: b.b > idx ? b.b - 1 : b.b,
+                        type: b.type
+                    };
+                });
+                CM.atoms.splice(idx, 1);
+                // Adjust last clicked index
+                if (cmLastClickedAtomIdx === idx)
+                    cmLastClickedAtomIdx = -1;
+                else if (cmLastClickedAtomIdx > idx)
+                    cmLastClickedAtomIdx--;
+                cmRender();
+                if (cmLastClickedAtomIdx >= 0)
+                    cmUpdateInfo(cmLastClickedAtomIdx);
+                else
+                    cmUpdateInfo(-1);
+            }
+
+            function cmTryBond(from, to) {
+                var atomA = CM.atoms[from]
+                  , atomB = CM.atoms[to];
+                var warn = document.getElementById('cm-valency-warn');
+                // Check forbidden: noble gases
+                var nobles = ['He', 'Ne', 'Ar', 'Kr', 'Xe'];
+                if (nobles.indexOf(atomA.sym) >= 0 || nobles.indexOf(atomB.sym) >= 0) {
+                    warn.textContent = '⚠ Noble gases cannot form bonds under normal conditions!';
+                    setTimeout(function() {
+                        warn.textContent = '';
+                    }, 3000);
+                    return;
+                }
+                // Check ionic: only metal + non-metal for ionic
+                if (CM.selectedBond === 'ionic') {
+                    var metals = ['Na', 'K', 'Mg', 'Ca', 'Al', 'Fe', 'Li', 'Ba', 'Sr'];
+                    var nonMetals = ['F', 'Cl', 'Br', 'I', 'O', 'S', 'N', 'P'];
+                    var aIsMetal = metals.indexOf(atomA.sym) >= 0;
+                    var bIsMetal = metals.indexOf(atomB.sym) >= 0;
+                    if (!((aIsMetal && !bIsMetal) || (!aIsMetal && bIsMetal))) {
+                        warn.textContent = '⚠ Ionic bonding requires a metal and a non-metal!';
+                        setTimeout(function() {
+                            warn.textContent = '';
+                        }, 3000);
+                        return;
+                    }
+                }
+                // Check H-bond: only N, O, F connected to H
+                if (CM.selectedBond === 'hbond') {
+                    var hbondEls = ['N', 'O', 'F'];
+                    if (!((atomA.sym === 'H' && hbondEls.indexOf(atomB.sym) >= 0) || (atomB.sym === 'H' && hbondEls.indexOf(atomA.sym) >= 0) || (hbondEls.indexOf(atomA.sym) >= 0 && hbondEls.indexOf(atomB.sym) >= 0))) {
+                        warn.textContent = '⚠ Hydrogen bonds form between H and N, O or F only!';
+                        setTimeout(function() {
+                            warn.textContent = '';
+                        }, 3000);
+                        return;
+                    }
+                }
+                // Check valency: count existing bonds for each atom
+                var bondCount = [0, 0];
+                var bondVal = CM.selectedBond === 'double' ? 2 : CM.selectedBond === 'triple' ? 3 : 1;
+                CM.bonds.forEach(function(b) {
+                    if (b.type === 'hbond' || b.type === 'vdw')
+                        return;
+                    var bv = b.type === 'double' ? 2 : b.type === 'triple' ? 3 : 1;
+                    if (b.a === from || b.b === from)
+                        bondCount[0] += bv;
+                    if (b.a === to || b.b === to)
+                        bondCount[1] += bv;
+                });
+                if (bondCount[0] + bondVal > atomA.val && CM.selectedBond !== 'hbond' && CM.selectedBond !== 'vdw' && CM.selectedBond !== 'ionic') {
+                    warn.textContent = '⚠ ' + atomA.sym + ' has valency ' + atomA.val + ' — it already has ' + bondCount[0] + ' bonds!';
+                    setTimeout(function() {
+                        warn.textContent = '';
+                    }, 3000);
+                    return;
+                }
+                if (bondCount[1] + bondVal > atomB.val && CM.selectedBond !== 'hbond' && CM.selectedBond !== 'vdw' && CM.selectedBond !== 'ionic') {
+                    warn.textContent = '⚠ ' + atomB.sym + ' has valency ' + atomB.val + ' — it already has ' + bondCount[1] + ' bonds!';
+                    setTimeout(function() {
+                        warn.textContent = '';
+                    }, 3000);
+                    return;
+                }
+                // Remove duplicate bond (upgrade)
+                CM.bonds = CM.bonds.filter(function(b) {
+                    return !(b.a === from && b.b === to) && !(b.a === to && b.b === from);
+                });
+                CM.bonds.push({
+                    a: from,
+                    b: to,
+                    type: CM.selectedBond
+                });
+                warn.textContent = '';
+                // Update last clicked to the 'to' atom so formula reflects the bonded molecule
+                cmLastClickedAtomIdx = to;
+                cmRender();
+                cmUpdateInfo(to);
+            }
+
+            function cmClear() {
+                CM.atoms = [];
+                CM.bonds = [];
+                CM.bondingFrom = null;
+                cmLastClickedAtomIdx = -1;
+                cmDeleteMode = false;
+                var delPill = document.getElementById('sb-cm-delete-tool');
+                if (delPill)
+                    delPill.classList.remove('selected');
+                cmRender();
+                cmUpdateInfo(-1);
+            }
+
+            function cmLoadExample(idx) {
+                var ex = CM_EXAMPLES[idx];
+                CM.atoms = [];
+                CM.bonds = [];
+                CM.nextId = 1;
+                // Centre the example
+                var cx = CM.canvas.width / 2
+                  , cy = CM.canvas.height / 2;
+                var exCx = 0
+                  , exCy = 0;
+                ex.atoms.forEach(function(a) {
+                    exCx += a.x;
+                    exCy += a.y;
+                });
+                exCx /= ex.atoms.length;
+                exCy /= ex.atoms.length;
+                var offX = cx - exCx
+                  , offY = cy - exCy;
+                ex.atoms.forEach(function(a) {
+                    var def = CM_ATOMS.find(function(d) {
+                        return d.sym === a.sym;
+                    }) || CM_ATOMS[0];
+                    CM.atoms.push({
+                        id: CM.nextId++,
+                        sym: a.sym,
+                        col: def.col,
+                        radius: def.r,
+                        x: a.x + offX,
+                        y: a.y + offY,
+                        val: def.val
+                    });
+                });
+                ex.bonds.forEach(function(b) {
+                    CM.bonds.push({
+                        a: b.a,
+                        b: b.b,
+                        type: b.type
+                    });
+                });
+                cmSelectedEl = null;
+                cmLastClickedAtomIdx = CM.atoms.length > 0 ? 0 : -1;
+                // Show example info
+                document.getElementById('cm-mol-name').textContent = ex.name;
+                document.getElementById('cm-mol-formula').textContent = ex.atoms.length > 0 ? 'Formula: ' + cmCountFormulaFromIndices(CM.atoms.map(function(_, i) {
+                    return i;
+                })) : '';
+                document.getElementById('cm-mol-desc').textContent = ex.desc;
+                cmRender();
+            }
+
+            // Track the most recently clicked/created atom for formula display
+            var cmLastClickedAtomIdx = -1;
+            var cmDeleteMode = false;
+
+            // Get the connected component (molecule) containing atom at index idx
+            function cmGetMolecule(idx) {
+                if (idx < 0 || idx >= CM.atoms.length)
+                    return [];
+                // BFS over covalent bonds
+                var visited = {};
+                var queue = [idx];
+                visited[idx] = true;
+                while (queue.length) {
+                    var cur = queue.shift();
+                    CM.bonds.forEach(function(b) {
+                        var other = -1;
+                        if (b.a === cur)
+                            other = b.b;
+                        else if (b.b === cur)
+                            other = b.a;
+                        if (other >= 0 && !visited[other] && b.type !== 'vdw') {
+                            visited[other] = true;
+                            queue.push(other);
+                        }
+                    });
+                }
+                return Object.keys(visited).map(Number);
+            }
+
+            // Count formula from a set of atom indices
+            function cmCountFormulaFromIndices(indices) {
+                var counts = {};
+                indices.forEach(function(i) {
+                    var s = CM.atoms[i].sym;
+                    counts[s] = (counts[s] || 0) + 1;
+                });
+                var order = ['C', 'H', 'N', 'O', 'F', 'Cl', 'Br', 'I', 'S', 'P', 'Na', 'K', 'Mg', 'Ca', 'Al', 'Fe'];
+                var f = '';
+                order.forEach(function(s) {
+                    if (counts[s]) {
+                        f += s + (counts[s] > 1 ? counts[s] : '');
+                        delete counts[s];
+                    }
+                });
+                Object.keys(counts).forEach(function(s) {
+                    f += s + (counts[s] > 1 ? counts[s] : '');
+                });
+                return f;
+            }
+
+            function cmCountFormula() {
+                var counts = {};
+                CM.atoms.forEach(function(a) {
+                    counts[a.sym] = (counts[a.sym] || 0) + 1;
+                });
+                var order = ['C', 'H', 'N', 'O', 'F', 'Cl', 'Br', 'I', 'S', 'P', 'Na', 'K', 'Mg', 'Ca', 'Al', 'Fe'];
+                var f = '';
+                order.forEach(function(s) {
+                    if (counts[s]) {
+                        f += s + (counts[s] > 1 ? counts[s] : '');
+                        delete counts[s];
+                    }
+                });
+                Object.keys(counts).forEach(function(s) {
+                    f += s + (counts[s] > 1 ? counts[s] : '');
+                });
+                return f;
+            }
+
+            function cmIdentifyMoleculeFromCounts(counts) {
+                var known = [{
+                    atoms: {
+                        H: 2,
+                        O: 1
+                    },
+                    name: 'Water (H₂O)',
+                    desc: 'Universal solvent. Bent molecule. Strong hydrogen bonding.'
+                }, {
+                    atoms: {
+                        C: 1,
+                        O: 2
+                    },
+                    name: 'Carbon dioxide (CO₂)',
+                    desc: 'Linear molecule. Greenhouse gas. Acidic oxide.'
+                }, {
+                    atoms: {
+                        C: 1,
+                        H: 4
+                    },
+                    name: 'Methane (CH₄)',
+                    desc: 'Simplest alkane. Tetrahedral. Main component of natural gas.'
+                }, {
+                    atoms: {
+                        N: 1,
+                        H: 3
+                    },
+                    name: 'Ammonia (NH₃)',
+                    desc: 'Weak alkali. Trigonal pyramidal. Hydrogen bonding. Made by Haber process.'
+                }, {
+                    atoms: {
+                        H: 1,
+                        Cl: 1
+                    },
+                    name: 'Hydrogen chloride (HCl)',
+                    desc: 'Polar covalent. Dissolves in water → strong acid.'
+                }, {
+                    atoms: {
+                        O: 2
+                    },
+                    name: 'Oxygen (O₂)',
+                    desc: 'Double bond. Supports combustion. Essential for aerobic respiration.'
+                }, {
+                    atoms: {
+                        N: 2
+                    },
+                    name: 'Nitrogen (N₂)',
+                    desc: 'Triple bond. 78% of atmosphere. Very unreactive.'
+                }, {
+                    atoms: {
+                        H: 2,
+                        O: 2
+                    },
+                    name: 'Hydrogen peroxide (H₂O₂)',
+                    desc: 'O-O bond. Decomposes to H₂O + O₂. Bleaching agent.'
+                }, {
+                    atoms: {
+                        Na: 1,
+                        Cl: 1
+                    },
+                    name: 'Sodium chloride (NaCl)',
+                    desc: 'Ionic compound. Giant lattice. Bp 1413°C. Conducts electricity when molten or dissolved.'
+                }, {
+                    atoms: {
+                        C: 2,
+                        H: 4
+                    },
+                    name: 'Ethene (C₂H₄)',
+                    desc: 'Alkene. C=C double bond. Addition reactions. Makes poly(ethene).'
+                }, {
+                    atoms: {
+                        C: 2,
+                        H: 2
+                    },
+                    name: 'Ethyne (C₂H₂)',
+                    desc: 'Alkyne. C≡C triple bond. Linear. Welding gas.'
+                }, {
+                    atoms: {
+                        C: 2,
+                        H: 6
+                    },
+                    name: 'Ethane (C₂H₆)',
+                    desc: 'Alkane. Only London forces. Bp -89°C. Undergoes free-radical substitution with halogens.'
+                }, {
+                    atoms: {
+                        H: 2
+                    },
+                    name: 'Hydrogen (H₂)',
+                    desc: 'Single bond. Lightest gas. Squeaky pop test. Clean fuel.'
+                }, {
+                    atoms: {
+                        Cl: 2
+                    },
+                    name: 'Chlorine (Cl₂)',
+                    desc: 'Single bond. Toxic green gas. Used in water purification.'
+                }, ];
+                for (var i = 0; i < known.length; i++) {
+                    var k = known[i];
+                    var match = true;
+                    var ks = Object.keys(k.atoms);
+                    if (ks.length !== Object.keys(counts).length) {
+                        match = false;
+                        continue;
+                    }
+                    for (var j = 0; j < ks.length; j++) {
+                        if ((counts[ks[j]] || 0) !== k.atoms[ks[j]]) {
+                            match = false;
+                            break;
+                        }
+                    }
+                    if (match)
+                        return {
+                            name: k.name,
+                            desc: k.desc
+                        };
+                }
+                return null;
+            }
+
+            function cmIdentifyMolecule() {
+                var counts = {};
+                CM.atoms.forEach(function(a) {
+                    counts[a.sym] = (counts[a.sym] || 0) + 1;
+                });
+                return cmIdentifyMoleculeFromCounts(counts);
+            }
+
+            function cmUpdateInfo(forceAtomIdx) {
+                // Determine which molecule to display
+                var displayIdx = (forceAtomIdx !== undefined) ? forceAtomIdx : cmLastClickedAtomIdx;
+                // Validate index is still valid
+                if (displayIdx >= CM.atoms.length)
+                    displayIdx = -1;
+
+                if (displayIdx < 0) {
+                    // No atom selected / empty space clicked
+                    document.getElementById('cm-mol-formula').textContent = '';
+                    if (CM.atoms.length === 0) {
+                        document.getElementById('cm-mol-name').textContent = '—';
+                        document.getElementById('cm-mol-desc').textContent = '';
+                    }
+                    // Don't clear name/desc if atoms exist — keep last displayed
+                    return;
+                }
+
+                var molIndices = cmGetMolecule(displayIdx);
+                var f = cmCountFormulaFromIndices(molIndices);
+                document.getElementById('cm-mol-formula').textContent = f ? 'Formula: ' + f : '';
+
+                // Try to identify molecule
+                var countsFull = {};
+                molIndices.forEach(function(i) {
+                    var s = CM.atoms[i].sym;
+                    countsFull[s] = (countsFull[s] || 0) + 1;
+                });
+                var known = cmIdentifyMoleculeFromCounts(countsFull);
+                if (known) {
+                    document.getElementById('cm-mol-name').textContent = known.name;
+                    document.getElementById('cm-mol-desc').textContent = known.desc;
+                } else if (f) {
+                    document.getElementById('cm-mol-name').textContent = f;
+                    document.getElementById('cm-mol-desc').textContent = '';
+                } else {
+                    document.getElementById('cm-mol-name').textContent = '—';
+                    document.getElementById('cm-mol-desc').textContent = '';
+                }
+            }
+
+            function cmRender() {
+                var cv = CM.canvas
+                  , ctx = CM.ctx;
+                if (!ctx)
+                    return;
+                ctx.clearRect(0, 0, cv.width, cv.height);
+                // Background
+                ctx.fillStyle = 'rgba(5,8,13,1)';
+                ctx.fillRect(0, 0, cv.width, cv.height);
+                // Grid
+                ctx.strokeStyle = 'rgba(91,168,245,.04)';
+                ctx.lineWidth = 1;
+                for (var gx = 0; gx < cv.width; gx += 40) {
+                    ctx.beginPath();
+                    ctx.moveTo(gx, 0);
+                    ctx.lineTo(gx, cv.height);
+                    ctx.stroke();
+                }
+                for (var gy = 0; gy < cv.height; gy += 40) {
+                    ctx.beginPath();
+                    ctx.moveTo(0, gy);
+                    ctx.lineTo(cv.width, gy);
+                    ctx.stroke();
+                }
+                // Draw bonds
+                CM.bonds.forEach(function(b) {
+                    cmDrawBond(ctx, b);
+                });
+                // Draw atoms
+                CM.atoms.forEach(function(a, i) {
+                    cmDrawAtom(ctx, a, i);
+                });
+                // Instruction if empty
+                if (CM.atoms.length === 0) {
+                    ctx.fillStyle = 'rgba(91,168,245,.15)';
+                    ctx.font = '13px JetBrains Mono, monospace';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('← Select an atom from the palette, then click here to place it', cv.width / 2, cv.height / 2);
+                    ctx.fillText('Or choose an Example from the palette to load a pre-built molecule', cv.width / 2, cv.height / 2 + 24);
+                    ctx.textAlign = 'left';
+                }
+                // Bonding-from indicator
+                if (CM.bondingFrom !== null && CM.bondingFrom < CM.atoms.length) {
+                    var bf = CM.atoms[CM.bondingFrom];
+                    ctx.save();
+                    ctx.strokeStyle = 'rgba(91,168,245,.7)';
+                    ctx.lineWidth = 2.5;
+                    ctx.setLineDash([4, 3]);
+                    ctx.beginPath();
+                    ctx.arc(bf.x, bf.y, bf.radius + 8, 0, Math.PI * 2);
+                    ctx.stroke();
+                    ctx.restore();
+                }
+            }
+
+            function cmDrawBond(ctx, b) {
+                if (b.a >= CM.atoms.length || b.b >= CM.atoms.length)
+                    return;
+                var a = CM.atoms[b.a]
+                  , bAtom = CM.atoms[b.b];
+                var dx = bAtom.x - a.x
+                  , dy = bAtom.y - a.y;
+                var dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 1)
+                    return;
+                var nx = dx / dist
+                  , ny = dy / dist;
+                var px = -ny
+                  , py = nx;
+                // perpendicular
+                ctx.save();
+                ctx.lineCap = 'round';
+                if (b.type === 'vdw') {
+                    ctx.strokeStyle = 'rgba(148,163,184,.35)';
+                    ctx.lineWidth = 1.5;
+                    ctx.setLineDash([4, 4]);
+                    ctx.beginPath();
+                    ctx.moveTo(a.x + nx * a.radius, a.y + ny * a.radius);
+                    ctx.lineTo(bAtom.x - nx * bAtom.radius, bAtom.y - ny * bAtom.radius);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                    ctx.restore();
+                    return;
+                }
+                if (b.type === 'hbond') {
+                    ctx.strokeStyle = 'rgba(96,165,250,.5)';
+                    ctx.lineWidth = 1.5;
+                    ctx.setLineDash([3, 3]);
+                    ctx.beginPath();
+                    ctx.moveTo(a.x + nx * a.radius, a.y + ny * a.radius);
+                    ctx.lineTo(bAtom.x - nx * bAtom.radius, bAtom.y - ny * bAtom.radius);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                    // Label
+                    var mx = (a.x + bAtom.x) / 2
+                      , my = (a.y + bAtom.y) / 2;
+                    ctx.fillStyle = 'rgba(96,165,250,.6)';
+                    ctx.font = '8px JetBrains Mono,monospace';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('H-bond', mx, my - 6);
+                    ctx.restore();
+                    return;
+                }
+                if (b.type === 'ionic') {
+                    // Draw dashed arrow + charge labels
+                    ctx.strokeStyle = 'rgba(251,191,36,.6)';
+                    ctx.lineWidth = 2;
+                    ctx.setLineDash([5, 3]);
+                    ctx.beginPath();
+                    ctx.moveTo(a.x + nx * a.radius, a.y + ny * a.radius);
+                    ctx.lineTo(bAtom.x - nx * bAtom.radius, bAtom.y - ny * bAtom.radius);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                    // Arrowhead
+                    var ex = bAtom.x - nx * bAtom.radius
+                      , ey = bAtom.y - ny * bAtom.radius;
+                    ctx.fillStyle = 'rgba(251,191,36,.6)';
+                    ctx.beginPath();
+                    ctx.moveTo(ex, ey);
+                    ctx.lineTo(ex - nx * 8 - px * 4, ey - ny * 8 - py * 4);
+                    ctx.lineTo(ex - nx * 8 + px * 4, ey - ny * 8 + py * 4);
+                    ctx.closePath();
+                    ctx.fill();
+                    // Charge labels
+                    ctx.font = 'bold 10px JetBrains Mono,monospace';
+                    ctx.textAlign = 'center';
+                    ctx.fillStyle = 'rgba(251,191,36,.8)';
+                    ctx.fillText('e⁻→', a.x + dx * .5, a.y + dy * .5 - 10);
+                    ctx.restore();
+                    return;
+                }
+                // Covalent bonds
+                var col = 'rgba(220,232,245,.75)';
+                var start = {
+                    x: a.x + nx * a.radius,
+                    y: a.y + ny * a.radius
+                };
+                var end = {
+                    x: bAtom.x - nx * bAtom.radius,
+                    y: bAtom.y - ny * bAtom.radius
+                };
+                ctx.strokeStyle = col;
+                if (b.type === 'single') {
+                    ctx.lineWidth = 2.5;
+                    ctx.beginPath();
+                    ctx.moveTo(start.x, start.y);
+                    ctx.lineTo(end.x, end.y);
+                    ctx.stroke();
+                } else if (b.type === 'double') {
+                    var sep = 4;
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(start.x + px * sep, start.y + py * sep);
+                    ctx.lineTo(end.x + px * sep, end.y + py * sep);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(start.x - px * sep, start.y - py * sep);
+                    ctx.lineTo(end.x - px * sep, end.y - py * sep);
+                    ctx.stroke();
+                } else if (b.type === 'triple') {
+                    var sep = 5;
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.moveTo(start.x, start.y);
+                    ctx.lineTo(end.x, end.y);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(start.x + px * sep, start.y + py * sep);
+                    ctx.lineTo(end.x + px * sep, end.y + py * sep);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(start.x - px * sep, start.y - py * sep);
+                    ctx.lineTo(end.x - px * sep, end.y - py * sep);
+                    ctx.stroke();
+                } else if (b.type === 'dative') {
+                    ctx.lineWidth = 2.5;
+                    ctx.beginPath();
+                    ctx.moveTo(start.x, start.y);
+                    ctx.lineTo(end.x, end.y);
+                    ctx.stroke();
+                    ctx.fillStyle = col;
+                    ctx.beginPath();
+                    ctx.moveTo(end.x, end.y);
+                    ctx.lineTo(end.x - nx * 10 - px * 5, end.y - ny * 10 - py * 5);
+                    ctx.lineTo(end.x - nx * 10 + px * 5, end.y - ny * 10 + py * 5);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+
+            function cmDrawAtom(ctx, a, idx) {
+                var hovered = CM.hoveredAtom === idx;
+                var bonding = CM.bondingFrom === idx;
+                var deleteHover = cmDeleteMode && hovered;
+                ctx.save();
+                // Shadow glow
+                if (deleteHover) {
+                    ctx.shadowColor = '#f04455';
+                    ctx.shadowBlur = 18;
+                } else if (hovered || bonding) {
+                    ctx.shadowColor = a.col;
+                    ctx.shadowBlur = 14;
+                }
+                // Circle
+                ctx.beginPath();
+                ctx.arc(a.x, a.y, a.radius, 0, Math.PI * 2);
+                // Fill
+                ctx.fillStyle = deleteHover ? 'rgba(240,68,85,0.25)' : a.col.replace(')', ',0.2)').replace('rgb', 'rgba');
+                ctx.fill();
+                // Border
+                ctx.strokeStyle = deleteHover ? '#f04455' : a.col;
+                ctx.lineWidth = (hovered || deleteHover) ? 2.5 : 1.8;
+                ctx.stroke();
+                // Delete X overlay
+                if (deleteHover) {
+                    ctx.shadowBlur = 0;
+                    ctx.strokeStyle = '#f04455';
+                    ctx.lineWidth = 2;
+                    var r = a.radius * 0.45;
+                    ctx.beginPath();
+                    ctx.moveTo(a.x - r, a.y - r);
+                    ctx.lineTo(a.x + r, a.y + r);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(a.x + r, a.y - r);
+                    ctx.lineTo(a.x - r, a.y + r);
+                    ctx.stroke();
+                }
+                // Symbol text
+                ctx.fillStyle = deleteHover ? 'rgba(255,100,100,.7)' : '#fff';
+                ctx.font = 'bold ' + (a.sym.length > 1 ? 9 : 11) + 'px JetBrains Mono,monospace';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.shadowBlur = 0;
+                if (!deleteHover)
+                    ctx.fillText(a.sym, a.x, a.y);
+                // Valency indicator (remaining bonds)
+                if (!deleteHover) {
+                    var used = 0;
+                    CM.bonds.forEach(function(b) {
+                        if (b.type === 'hbond' || b.type === 'vdw' || b.type === 'ionic')
+                            return;
+                        var bv = b.type === 'double' ? 2 : b.type === 'triple' ? 3 : 1;
+                        if (b.a === idx || b.b === idx)
+                            used += bv;
+                    });
+                    var rem = a.val - used;
+                    if (rem > 0) {
+                        ctx.font = '7px JetBrains Mono,monospace';
+                        ctx.fillStyle = 'rgba(255,255,255,.4)';
+                        ctx.fillText(rem + 'e', a.x + a.radius * .55, a.y - a.radius * .55);
+                    }
+                }
+                ctx.restore();
+            }
+
+            // ═══════════════════════════════════════════════════════════════════
+            // ███████  ORGANIC CHEMISTRY MODE  █████████████████████████████████
+            // ═══════════════════════════════════════════════════════════════════
+            var ORG_FAMILIES = [{
+                id: 'alkanes',
+                icon: '⛽',
+                name: 'Alkanes',
+                suffix: '-ane',
+                genFormula: 'CₙH₂ₙ₊₂',
+                col: '#94a3b8',
+                desc: 'Saturated hydrocarbons. Single bonds only. General formula CₙH₂ₙ₊₂. Non-polar — only London dispersion forces. BP increases with chain length.',
+                namingRule: 'Count the carbons: 1=meth-, 2=eth-, 3=prop-, 4=but-, 5=pent-, 6=hex-, 7=hept-, 8=oct-. Add suffix -ane.',
+                series: [{
+                    n: 1,
+                    name: 'Methane',
+                    sym: 'CH₄',
+                    bp: -161,
+                    state: 'g',
+                    uses: 'Natural gas, fuel'
+                }, {
+                    n: 2,
+                    name: 'Ethane',
+                    sym: 'C₂H₆',
+                    bp: -89,
+                    state: 'g',
+                    uses: 'Fuel, make ethene'
+                }, {
+                    n: 3,
+                    name: 'Propane',
+                    sym: 'C₃H₈',
+                    bp: -42,
+                    state: 'g',
+                    uses: 'LPG, camping gas'
+                }, {
+                    n: 4,
+                    name: 'Butane',
+                    sym: 'C₄H₁₀',
+                    bp: -1,
+                    state: 'g',
+                    uses: 'Lighter fuel, LPG'
+                }, {
+                    n: 5,
+                    name: 'Pentane',
+                    sym: 'C₅H₁₂',
+                    bp: 36,
+                    state: 'l',
+                    uses: 'Solvent, lab use'
+                }, {
+                    n: 6,
+                    name: 'Hexane',
+                    sym: 'C₆H₁₄',
+                    bp: 69,
+                    state: 'l',
+                    uses: 'Solvent, petrol'
+                }, {
+                    n: 7,
+                    name: 'Heptane',
+                    sym: 'C₇H₁₆',
+                    bp: 98,
+                    state: 'l',
+                    uses: 'Fuel reference, octane rating'
+                }, {
+                    n: 8,
+                    name: 'Octane',
+                    sym: 'C₈H₁₈',
+                    bp: 126,
+                    state: 'l',
+                    uses: 'Petrol, reference fuel'
+                }, ],
+                reactions: [{
+                    title: 'Complete Combustion',
+                    eq: 'CH₄ + 2O₂ → CO₂ + 2H₂O  [heat]',
+                    obs: 'Blue flame. Produces CO₂ + H₂O. Exothermic. Test: limewater turns milky, anhydrous CuSO₄ turns blue.'
+                }, {
+                    title: 'Incomplete Combustion',
+                    eq: '2CH₄ + 3O₂ → 2CO + 4H₂O  [limited O₂]',
+                    obs: 'Yellow sooty flame. Carbon monoxide (toxic!) or carbon (soot) produced. Occurs in insufficient oxygen.'
+                }, {
+                    title: 'Free-Radical Substitution (with Br₂, UV light)',
+                    eq: 'CH₄ + Br₂ → CH₃Br + HBr  [UV light]',
+                    obs: 'Orange bromine decolorises slowly. UV light initiates chain reaction: initiation → propagation → termination. Halogenoalkane formed.'
+                }, {
+                    title: 'Cracking (thermal/catalytic)',
+                    eq: 'C₁₀H₂₂ → C₅H₁₂ + C₅H₁₀  [Al₂O₃, 450°C]',
+                    obs: 'Long-chain alkanes cracked into shorter alkanes + alkenes. Makes fuels and chemical feedstocks. Product mixture decolorises Br₂.'
+                }, ]
+            }, {
+                id: 'alkenes',
+                icon: '🔗',
+                name: 'Alkenes',
+                suffix: '-ene',
+                genFormula: 'CₙH₂ₙ',
+                col: '#60a5fa',
+                desc: 'Unsaturated hydrocarbons with one C=C double bond. Reactive — undergo addition reactions. Test: decolorises bromine water instantly.',
+                namingRule: 'Count carbons, state position of double bond: e.g. but-1-ene (C=C between C1 and C2). Suffix: -ene.',
+                series: [{
+                    n: 2,
+                    name: 'Ethene',
+                    sym: 'C₂H₄',
+                    bp: -104,
+                    state: 'g',
+                    uses: 'Make poly(ethene), ethanol'
+                }, {
+                    n: 3,
+                    name: 'Propene',
+                    sym: 'C₃H₆',
+                    bp: -47,
+                    state: 'g',
+                    uses: 'Make poly(propene), propan-2-ol'
+                }, {
+                    n: 4,
+                    name: 'But-1-ene',
+                    sym: 'C₄H₈',
+                    bp: -6,
+                    state: 'g',
+                    uses: 'Make poly(but-1-ene)'
+                }, {
+                    n: 5,
+                    name: 'Pent-1-ene',
+                    sym: 'C₅H₁₀',
+                    bp: 30,
+                    state: 'l',
+                    uses: 'Solvent, monomer'
+                }, {
+                    n: 6,
+                    name: 'Hex-1-ene',
+                    sym: 'C₆H₁₂',
+                    bp: 63,
+                    state: 'l',
+                    uses: 'Monomer for polymers'
+                }, ],
+                reactions: [{
+                    title: 'Addition of Bromine (test for C=C)',
+                    eq: 'C₂H₄ + Br₂ → CH₂BrCH₂Br  [room temp]',
+                    obs: 'ORANGE BROMINE WATER DECOLORISES — positive test for alkene! Forms 1,2-dibromoethane. Electrophilic addition. Alkanes do NOT decolorise Br₂.'
+                }, {
+                    title: 'Hydration (make alcohols)',
+                    eq: 'C₂H₄ + H₂O ⇌ C₂H₅OH  [H₃PO₄, 300°C, 60 atm]',
+                    obs: 'Industrial route to ethanol. Reversible — ~5% conversion per pass. Product separated and unreacted ethene recycled. Phosphoric acid catalyst on silica.'
+                }, {
+                    title: 'Hydrogenation',
+                    eq: 'C₂H₄ + H₂ → C₂H₆  [Ni, 150°C]',
+                    obs: 'Alkene becomes alkane. Used to harden vegetable oils (margarine). Nickel catalyst. No longer decolorises Br₂ — reaction complete.'
+                }, {
+                    title: 'Polymerisation',
+                    eq: 'n CH₂=CH₂ → [-CH₂-CH₂-]ₙ  [high P, Ziegler-Natta]',
+                    obs: 'Ethene monomers join to form poly(ethene). Addition polymerisation — no small molecule released. Produces plastic with no C=C bonds in product.'
+                }, {
+                    title: 'Addition of HBr (Markovnikov)',
+                    eq: 'CH₃CH=CH₂ + HBr → CH₃CHBrCH₃  [major]',
+                    obs: 'HBr adds across C=C. Markovnikov\'s rule: H goes to the C with more H already (gives secondary over primary product). Carbocation stability determines which product dominates.'
+                }, ]
+            }, {
+                id: 'alkynes',
+                icon: '≡',
+                name: 'Alkynes',
+                suffix: '-yne',
+                genFormula: 'CₙH₂ₙ₋₂',
+                col: '#7dd3fc',
+                desc: 'Unsaturated hydrocarbons with one C≡C triple bond. More reactive than alkenes. Can add 2 molecules across the triple bond.',
+                namingRule: 'Count carbons, state position of triple bond. Suffix: -yne. e.g. but-2-yne has C≡C between C2 and C3.',
+                series: [{
+                    n: 2,
+                    name: 'Ethyne',
+                    sym: 'C₂H₂',
+                    bp: -84,
+                    state: 'g',
+                    uses: 'Welding (oxy-acetylene), PVC'
+                }, {
+                    n: 3,
+                    name: 'Propyne',
+                    sym: 'C₃H₄',
+                    bp: -23,
+                    state: 'g',
+                    uses: 'Fuel, synthesis'
+                }, {
+                    n: 4,
+                    name: 'But-1-yne',
+                    sym: 'C₄H₆',
+                    bp: 8,
+                    state: 'g',
+                    uses: 'Synthesis'
+                }, ],
+                reactions: [{
+                    title: 'Addition of 2× Br₂',
+                    eq: 'C₂H₂ + 2Br₂ → CHBr₂CHBr₂  [excess Br₂]',
+                    obs: 'TWO molecules of Br₂ can add (triple bond can accept 2 additions). Excess Br₂ decolorises completely. 1,1,2,2-tetrabromoethane forms.'
+                }, {
+                    title: 'Addition of H₂O (vinyl alcohol → ethanal)',
+                    eq: 'C₂H₂ + H₂O → CH₃CHO  [H₂SO₄/HgSO₄, 80°C]',
+                    obs: 'Vinyl alcohol (enol) initially forms, immediately tautomerises to ethanal. This is the Markovnikov addition. Gives aldehyde from terminal alkynes.'
+                }, ]
+            }, {
+                id: 'alcohols',
+                icon: '🍾',
+                name: 'Alcohols',
+                suffix: '-ol',
+                genFormula: 'CₙH₂ₙ₊₁OH',
+                col: '#a78bfa',
+                desc: 'Contain -OH (hydroxyl) group. Polar — hydrogen bonding raises boiling points. Lower alcohols mix with water. Undergo oxidation, esterification, dehydration.',
+                namingRule: 'Name the parent alkane, replace -e with -ol. Number to give -OH lowest number. e.g. propan-2-ol = OH on C2 of propane.',
+                series: [{
+                    n: 1,
+                    name: 'Methanol',
+                    sym: 'CH₃OH',
+                    bp: 65,
+                    state: 'l',
+                    uses: 'Fuel, antifreeze, solvent — TOXIC'
+                }, {
+                    n: 2,
+                    name: 'Ethanol',
+                    sym: 'C₂H₅OH',
+                    bp: 78,
+                    state: 'l',
+                    uses: 'Alcoholic drinks, fuel, antiseptic'
+                }, {
+                    n: 3,
+                    name: 'Propan-1-ol',
+                    sym: 'C₃H₇OH',
+                    bp: 97,
+                    state: 'l',
+                    uses: 'Solvent, cosmetics'
+                }, {
+                    n: 3,
+                    name: 'Propan-2-ol',
+                    sym: '(CH₃)₂CHOH',
+                    bp: 82,
+                    state: 'l',
+                    uses: 'Rubbing alcohol, solvent, hand sanitiser'
+                }, {
+                    n: 4,
+                    name: 'Butan-1-ol',
+                    sym: 'C₄H₉OH',
+                    bp: 117,
+                    state: 'l',
+                    uses: 'Solvent, plasticisers'
+                }, ],
+                reactions: [{
+                    title: 'Oxidation (primary → aldehyde → carboxylic acid)',
+                    eq: 'C₂H₅OH + [O] → CH₃CHO + [O] → CH₃COOH  [K₂Cr₂O₇, H₂SO₄]',
+                    obs: 'Orange K₂Cr₂O₇ turns GREEN. Primary alcohols → aldehydes (distil off) → then carboxylic acids (reflux). Secondary → ketones only. Tertiary → no oxidation.'
+                }, {
+                    title: 'Esterification',
+                    eq: 'C₂H₅OH + CH₃COOH ⇌ CH₃COOC₂H₅ + H₂O  [H₂SO₄, heat]',
+                    obs: 'Fruity smell of ethyl ethanoate (nail polish remover)! Reversible — equilibrium. H₂SO₄ as catalyst and dehydrating agent. Reflux to increase yield.'
+                }, {
+                    title: 'Dehydration (make alkenes)',
+                    eq: 'C₂H₅OH → C₂H₄ + H₂O  [Al₂O₃, 300°C OR conc H₂SO₄, 170°C]',
+                    obs: 'Elimination of water. Alkene formed. Product decolorises Br₂ water. Al₂O₃ at 300°C or conc H₂SO₄ at 170°C used. E2 mechanism at A-level.'
+                }, {
+                    title: 'Reaction with Na (like water but slower)',
+                    eq: '2C₂H₅OH + 2Na → 2C₂H₅ONa + H₂  [room temp]',
+                    obs: 'Steady bubbles of H₂. Slower than Na + H₂O (ethanol is a weaker acid). Sodium ethoxide (alkoxide) formed. Alcohols do NOT react with NaOH, Na₂CO₃ or NaHCO₃.'
+                }, {
+                    title: 'Fermentation (ethanol production)',
+                    eq: 'C₆H₁₂O₆ → 2C₂H₅OH + 2CO₂  [yeast enzymes, 30°C]',
+                    obs: 'CO₂ bubbles. Ethanol produced. Yeast contains zymase enzyme. Optimum 30°C. pH ≈ 5. Max ~15% ethanol (kills yeast). Renewable production of biofuel.'
+                }, ]
+            }, {
+                id: 'carboxylic',
+                icon: '🍋',
+                name: 'Carboxylic Acids',
+                suffix: '-oic acid',
+                genFormula: 'CₙH₂ₙ₊₁COOH',
+                col: '#fbbf24',
+                desc: 'Contain -COOH (carboxyl) group. Weak acids — partially dissociate. React with bases, carbonates, alcohols. Test: fizzes with NaHCO₃ (CO₂).',
+                namingRule: 'Name parent chain including the COOH carbon. Suffix: -oic acid. e.g. methanoic acid (HCOOH, C1), ethanoic acid (CH₃COOH, C2).',
+                series: [{
+                    n: 1,
+                    name: 'Methanoic acid',
+                    sym: 'HCOOH',
+                    bp: 101,
+                    state: 'l',
+                    uses: 'Ant sting, preservative'
+                }, {
+                    n: 2,
+                    name: 'Ethanoic acid',
+                    sym: 'CH₃COOH',
+                    bp: 118,
+                    state: 'l',
+                    uses: 'Vinegar, solvent'
+                }, {
+                    n: 3,
+                    name: 'Propanoic acid',
+                    sym: 'C₂H₅COOH',
+                    bp: 141,
+                    state: 'l',
+                    uses: 'Food preservative (E281)'
+                }, {
+                    n: 4,
+                    name: 'Butanoic acid',
+                    sym: 'C₃H₇COOH',
+                    bp: 164,
+                    state: 'l',
+                    uses: 'Rancid butter smell'
+                }, {
+                    n: 6,
+                    name: 'Hexanoic acid',
+                    sym: 'C₅H₁₁COOH',
+                    bp: 205,
+                    state: 'l',
+                    uses: 'Goat fat smell'
+                }, ],
+                reactions: [{
+                    title: 'Reaction with NaHCO₃ (test for COOH)',
+                    eq: 'CH₃COOH + NaHCO₃ → CH₃COONa + H₂O + CO₂',
+                    obs: 'FIZZING! CO₂ turns limewater milky. THIS is the test that distinguishes carboxylic acids from alcohols and aldehydes — only COOH group reacts with NaHCO₃.'
+                }, {
+                    title: 'Neutralisation with NaOH',
+                    eq: 'CH₃COOH + NaOH → CH₃COONa + H₂O',
+                    obs: 'Salt (sodium ethanoate) + water. No fizzing — just neutralisation. Exothermic. Product is a carboxylate salt — used as food preservative (E262).'
+                }, {
+                    title: 'Esterification',
+                    eq: 'CH₃COOH + C₂H₅OH ⇌ CH₃COOC₂H₅ + H₂O  [H₂SO₄, heat]',
+                    obs: 'Ethyl ethanoate — fruity smell! Reversible equilibrium. Conc H₂SO₄ dehydrates to push equilibrium right. Used to make flavouring and perfumes.'
+                }, {
+                    title: 'Reduction to aldehyde/alcohol',
+                    eq: 'CH₃COOH + 2[H] → CH₃CHO + H₂O  [LiAlH₄]',
+                    obs: 'LiAlH₄ (lithium aluminium hydride) reduces carboxylic acid → primary alcohol. NaBH₄ does NOT reduce carboxylic acids. Strong reductant required.'
+                }, ]
+            }, {
+                id: 'esters',
+                icon: '🍓',
+                name: 'Esters',
+                suffix: '-oate',
+                genFormula: 'RCOOR\'',
+                col: '#f97316',
+                desc: 'Formed from carboxylic acid + alcohol. Have pleasant fruity smells. Used as flavourings and perfumes. Contain -COO- linkage. Hydrolysed by acid or base.',
+                namingRule: 'Name from alcohol (alkyl- part) then acid (-oate part). e.g. ethyl ethanoate = from ethanol + ethanoic acid.',
+                series: [{
+                    n: 2,
+                    name: 'Methyl methanoate',
+                    sym: 'HCOOCH₃',
+                    bp: 32,
+                    state: 'l',
+                    uses: 'Solvent'
+                }, {
+                    n: 3,
+                    name: 'Ethyl methanoate',
+                    sym: 'HCOOC₂H₅',
+                    bp: 54,
+                    state: 'l',
+                    uses: 'Raspberry flavour'
+                }, {
+                    n: 4,
+                    name: 'Methyl ethanoate',
+                    sym: 'CH₃COOCH₃',
+                    bp: 57,
+                    state: 'l',
+                    uses: 'Solvent, nail polish'
+                }, {
+                    n: 4,
+                    name: 'Ethyl ethanoate',
+                    sym: 'CH₃COOC₂H₅',
+                    bp: 77,
+                    state: 'l',
+                    uses: 'Nail polish remover, pear drops'
+                }, {
+                    n: 5,
+                    name: 'Propyl ethanoate',
+                    sym: 'CH₃COOC₃H₇',
+                    bp: 102,
+                    state: 'l',
+                    uses: 'Pear flavour'
+                }, {
+                    n: 5,
+                    name: 'Isoamyl acetate',
+                    sym: 'CH₃COOC₅H₁₁',
+                    bp: 142,
+                    state: 'l',
+                    uses: 'Banana flavour (E-number)'
+                }, ],
+                reactions: [{
+                    title: 'Acid Hydrolysis (reversible)',
+                    eq: 'CH₃COOC₂H₅ + H₂O ⇌ CH₃COOH + C₂H₅OH  [H⁺, heat]',
+                    obs: 'Ester hydrolysis — reverse of esterification. Reversible equilibrium. Vinegar smell develops. Incomplete — equilibrium mixture.'
+                }, {
+                    title: 'Base Hydrolysis / Saponification (irreversible)',
+                    eq: 'CH₃COOC₂H₅ + NaOH → CH₃COONa + C₂H₅OH',
+                    obs: 'GOES TO COMPLETION — unlike acid hydrolysis! NaOH gives carboxylate salt (not free acid). This is how soap is made — triglycerides (fats) + NaOH → fatty acid sodium salts (soap).'
+                }, ]
+            }, {
+                id: 'aldehydes',
+                icon: '🔴',
+                name: 'Aldehydes',
+                suffix: '-al',
+                genFormula: 'RCHO',
+                col: '#f87171',
+                desc: 'Contain -CHO group. Can be oxidised (to carboxylic acids) — making them reducing agents. Distinguished from ketones by Tollens\' and Fehling\'s tests.',
+                namingRule: 'Name parent chain including the CHO carbon. Suffix: -al. e.g. methanal (HCHO, C1), ethanal (CH₃CHO, C2).',
+                series: [{
+                    n: 1,
+                    name: 'Methanal',
+                    sym: 'HCHO',
+                    bp: -19,
+                    state: 'g',
+                    uses: 'Formaldehyde, preservation, disinfectant'
+                }, {
+                    n: 2,
+                    name: 'Ethanal',
+                    sym: 'CH₃CHO',
+                    bp: 20,
+                    state: 'l',
+                    uses: 'Synthesis, flavouring, solvent'
+                }, {
+                    n: 3,
+                    name: 'Propanal',
+                    sym: 'C₂H₅CHO',
+                    bp: 49,
+                    state: 'l',
+                    uses: 'Synthesis, solvent'
+                }, {
+                    n: 4,
+                    name: 'Butanal',
+                    sym: 'C₃H₇CHO',
+                    bp: 75,
+                    state: 'l',
+                    uses: 'Flavouring, synthesis'
+                }, ],
+                reactions: [{
+                    title: 'Tollens\' Test (silver mirror)',
+                    eq: 'RCHO + 2Ag(NH₃)₂⁺ + 2OH⁻ → RCOOH + 2Ag↓ + 4NH₃ + H₂O',
+                    obs: 'SILVER MIRROR forms on test tube wall! Aldehyde reduces Ag⁺ to Ag metal. Ketones give NO silver mirror — key distinction. This proves aldehyde group present.'
+                }, {
+                    title: 'Fehling\'s / Benedict\'s Test',
+                    eq: "RCHO + 2Cu²⁺(blue) → RCOOH + Cu₂O↓(brick-red)",
+                    obs: 'BLUE → BRICK-RED precipitate of Cu₂O! Aldehyde reduces Cu²⁺. Ketones give no change. Also used to test for reducing sugars (glucose etc). Benedict\'s solution used in food testing.'
+                }, {
+                    title: 'Oxidation with K₂Cr₂O₇',
+                    eq: 'CH₃CHO + [O] → CH₃COOH  [K₂Cr₂O₇/H₂SO₄]',
+                    obs: 'Orange → green as Cr³⁺ forms. Aldehyde oxidised to carboxylic acid. Ketones do NOT react. Colour change confirms aldehyde present.'
+                }, {
+                    title: 'Reduction to primary alcohol',
+                    eq: 'CH₃CHO + 2[H] → C₂H₅OH  [NaBH₄ or LiAlH₄]',
+                    obs: 'Reduced to primary alcohol. NaBH₄ in water sufficient (unlike for ketones or carboxylic acids). Aldehyde → alcohol = reduction.'
+                }, ]
+            }, {
+                id: 'ketones',
+                icon: '🟡',
+                name: 'Ketones',
+                suffix: '-one',
+                genFormula: 'RCOR\'',
+                col: '#fcd34d',
+                desc: 'Contain C=O between two carbon chains. Cannot be easily oxidised. Do NOT react with Tollens\' or Fehling\'s. Distinguished from aldehydes by these negative tests.',
+                namingRule: 'Name parent chain, number the C=O from nearest end. Suffix: -one. e.g. propan-2-one (C=O on C2 of propane) = acetone.',
+                series: [{
+                    n: 3,
+                    name: 'Propan-2-one',
+                    sym: 'CH₃COCH₃',
+                    bp: 56,
+                    state: 'l',
+                    uses: 'Acetone — nail polish remover, solvent'
+                }, {
+                    n: 4,
+                    name: 'Butan-2-one',
+                    sym: 'CH₃COC₂H₅',
+                    bp: 80,
+                    state: 'l',
+                    uses: 'Solvent (MEK), paint thinner'
+                }, {
+                    n: 5,
+                    name: 'Pentan-2-one',
+                    sym: 'C₂H₅COCH₃',
+                    bp: 102,
+                    state: 'l',
+                    uses: 'Solvent, flavouring'
+                }, {
+                    n: 5,
+                    name: 'Pentan-3-one',
+                    sym: 'C₂H₅COC₂H₅',
+                    bp: 102,
+                    state: 'l',
+                    uses: 'Solvent'
+                }, ],
+                reactions: [{
+                    title: 'No reaction with Tollens\' (confirms ketone)',
+                    eq: 'R₁COR₂ + Ag(NH₃)₂⁺ → NO REACTION',
+                    obs: 'No silver mirror! Ketones are NOT reducing agents — C=O is flanked by two carbon groups, no oxidisable H. Negative Tollens\' = ketone (not aldehyde).'
+                }, {
+                    title: 'Reduction to secondary alcohol',
+                    eq: 'CH₃COCH₃ + 2[H] → (CH₃)₂CHOH  [NaBH₄]',
+                    obs: 'Propan-2-ol (secondary alcohol) formed. Ketone → secondary alcohol = reduction. NaBH₄ works for ketones and aldehydes.'
+                }, {
+                    title: '2,4-DNPH (Brady\'s reagent) — positive for both aldehydes and ketones',
+                    eq: 'RCOR\' + 2,4-DNPH → orange/yellow precipitate',
+                    obs: 'BRIGHT ORANGE or YELLOW precipitate — confirms C=O group (both aldehyde and ketone). Does NOT distinguish between them. Then use Tollens\' to distinguish: silver mirror = aldehyde.'
+                }, ]
+            }, {
+                id: 'haloalkanes',
+                icon: '⚗',
+                name: 'Halogenoalkanes',
+                suffix: '-halo',
+                genFormula: 'RX (X=F,Cl,Br,I)',
+                col: '#4ade80',
+                desc: 'Contain a C-X bond (X = halogen). Undergo nucleophilic substitution (SN1/SN2) and elimination. Reactivity: C-I > C-Br > C-Cl > C-F.',
+                namingRule: 'Name halogen as prefix (fluoro-, chloro-, bromo-, iodo-). Number from nearest end. e.g. 2-bromobutane = Br on C2 of butane.',
+                series: [{
+                    n: 1,
+                    name: 'Chloromethane',
+                    sym: 'CH₃Cl',
+                    bp: -24,
+                    state: 'g',
+                    uses: 'Refrigerant, methylating agent'
+                }, {
+                    n: 2,
+                    name: 'Bromoethane',
+                    sym: 'C₂H₅Br',
+                    bp: 38,
+                    state: 'l',
+                    uses: 'Synthesis, Grignard reagent'
+                }, {
+                    n: 1,
+                    name: 'Iodomethane',
+                    sym: 'CH₃I',
+                    bp: 42,
+                    state: 'l',
+                    uses: 'Methylating agent, synthesis'
+                }, {
+                    n: 2,
+                    name: '1,2-Dichloroethane',
+                    sym: 'ClCH₂CH₂Cl',
+                    bp: 84,
+                    state: 'l',
+                    uses: 'PVC monomer synthesis'
+                }, {
+                    n: 1,
+                    name: 'Trichloromethane',
+                    sym: 'CHCl₃',
+                    bp: 61,
+                    state: 'l',
+                    uses: 'Chloroform — anaesthetic (historical)'
+                }, ],
+                reactions: [{
+                    title: 'Nucleophilic Substitution with NaOH (aq) — makes alcohol',
+                    eq: 'C₂H₅Br + NaOH(aq) → C₂H₅OH + NaBr  [reflux, water]',
+                    obs: 'OH⁻ is nucleophile — attacks C bonded to Br (δ+). SN2 mechanism (primary). Alcohol formed. Primary: mainly SN2; tertiary: mainly SN1 via carbocation. Inversion of configuration (Walden inversion) in SN2.'
+                }, {
+                    title: 'Reaction with KCN — makes nitrile (extends chain)',
+                    eq: 'C₂H₅Br + KCN → C₂H₅CN + KBr  [ethanol, heat]',
+                    obs: 'CN⁻ nucleophile. Propionitrile formed. Chain lengthened by 1 carbon! Key synthetic step to build longer molecules. Product can be hydrolysed to carboxylic acid.'
+                }, {
+                    title: 'Elimination with KOH (ethanolic) — makes alkene',
+                    eq: 'C₂H₅Br + KOH → C₂H₄ + KBr + H₂O  [ethanolic KOH, heat]',
+                    obs: 'Hot ethanolic KOH → elimination (E2 mechanism). Alkene formed. Decolorises Br₂. Aqueous KOH = substitution. Ethanolic KOH = elimination. Key A-level condition distinction!'
+                }, {
+                    title: 'AgNO₃ in ethanol test (identifying halide)',
+                    eq: 'RX + AgNO₃(aq in ethanol) → AgX↓',
+                    obs: 'White AgCl (fast), cream AgBr (medium), yellow AgI (slow/no clear precipitate). Rate of precipitate: I > Br > Cl reflects C-X bond strength. Used to identify which halogen.'
+                }, ]
+            }, {
+                id: 'amines',
+                icon: '💜',
+                name: 'Amines',
+                suffix: '-amine',
+                genFormula: 'RNH₂',
+                col: '#c084fc',
+                desc: 'Contain -NH₂ group. Act as bases (lone pair on N accepts H⁺). Lower amines smell of fish. React with acids to form ammonium salts.',
+                namingRule: 'Prefix with number of carbons, then -ylamine. e.g. methylamine (CH₃NH₂), ethylamine (C₂H₅NH₂). Aromatic: aniline (C₆H₅NH₂).',
+                series: [{
+                    n: 1,
+                    name: 'Methylamine',
+                    sym: 'CH₃NH₂',
+                    bp: -7,
+                    state: 'g',
+                    uses: 'Synthesis, fishy smell'
+                }, {
+                    n: 2,
+                    name: 'Ethylamine',
+                    sym: 'C₂H₅NH₂',
+                    bp: 17,
+                    state: 'l',
+                    uses: 'Synthesis, rubber'
+                }, {
+                    n: 3,
+                    name: 'Propylamine',
+                    sym: 'C₃H₇NH₂',
+                    bp: 49,
+                    state: 'l',
+                    uses: 'Synthesis'
+                }, {
+                    n: 6,
+                    name: 'Aniline',
+                    sym: 'C₆H₅NH₂',
+                    bp: 184,
+                    state: 'l',
+                    uses: 'Dyes, drugs synthesis'
+                }, ],
+                reactions: [{
+                    title: 'Reaction with HCl — forms ammonium salt',
+                    eq: 'CH₃NH₂ + HCl → CH₃NH₃⁺Cl⁻  (methylammonium chloride)',
+                    obs: 'White smoke when HCl gas nearby (like NH₃ + HCl → NH₄Cl). Amine acts as a base. Salt formed is ionic, solid, soluble. This is how antihistamines and medicines are formulated as "hydrochloride" salts.'
+                }, {
+                    title: 'Diazotisation of aromatic amine (aniline)',
+                    eq: 'C₆H₅NH₂ + HNO₂ + HCl → C₆H₅N₂⁺Cl⁻ + 2H₂O  [0–5°C]',
+                    obs: 'Must keep cold! Diazonium salt forms. Above 5°C decomposes (N₂ lost). First step in azo dye synthesis. Couple with phenol → vivid orange/red azo dye.'
+                }, ]
+            }, ];
+
+            var orgCurrentFamily = null
+              , orgCurrentMember = 0;
+            var orgInited = false;
+
+            function initOrganic() {
+                if (orgInited)
+                    return;
+                orgInited = true;
+                buildOrgFamilyList();
+                // Auto-select first
+                setTimeout(function() {
+                    orgSelectFamily(ORG_FAMILIES[0].id);
+                }, 50);
+            }
+
+            function buildOrgFamilyList() {
+                var list = document.getElementById('org-family-list');
+                list.innerHTML = '';
+                ORG_FAMILIES.forEach(function(f) {
+                    var btn = document.createElement('button');
+                    btn.className = 'org-family-btn';
+                    btn.id = 'orgfam-' + f.id;
+                    btn.innerHTML = '<span class="org-family-icon">' + f.icon + '</span><span><span style="display:block;font-size:9px;font-weight:600;color:var(--text)">' + f.name + '</span><span style="font-size:7.5px;color:var(--dim)">' + f.genFormula + '</span></span>';
+                    btn.onclick = function() {
+                        orgSelectFamily(f.id);
+                    }
+                    ;
+                    list.appendChild(btn);
+                });
+            }
+
+            function orgSelectFamily(fid) {
+                orgCurrentFamily = fid;
+                orgCurrentMember = 0;
+                // Sync original org-sidebar buttons (may be hidden but kept for compatibility)
+                ORG_FAMILIES.forEach(function(f) {
+                    var btn = document.getElementById('orgfam-' + f.id);
+                    if (btn)
+                        btn.classList.toggle('active', f.id === fid);
+                });
+                // Sync main sidebar buttons
+                ORG_FAMILIES.forEach(function(f) {
+                    var btn2 = document.getElementById('sb-orgfam-' + f.id);
+                    if (!btn2)
+                        return;
+                    var isActive = f.id === fid;
+                    btn2.style.borderLeftColor = isActive ? f.col : 'transparent';
+                    btn2.style.color = isActive ? f.col : 'var(--muted)';
+                    btn2.style.background = isActive ? 'rgba(255,255,255,.03)' : '';
+                });
+                var family = ORG_FAMILIES.find(function(f) {
+                    return f.id === fid;
+                });
+                if (!family)
+                    return;
+                document.getElementById('org-family-title').textContent = family.icon + ' ' + family.name;
+                document.getElementById('org-family-subtitle').textContent = family.desc;
+                // Build series
+                var scroll = document.getElementById('org-series-scroll');
+                scroll.innerHTML = '';
+                family.series.forEach(function(m, i) {
+                    var card = document.createElement('div');
+                    card.className = 'org-series-card' + (i === 0 ? ' active' : '');
+                    card.id = 'orgser-' + fid + '-' + i;
+                    card.innerHTML = '<div class="org-series-card-name">' + m.name + '</div><div class="org-series-card-formula" style="color:' + family.col + '">' + m.sym + '</div><div style="font-family:var(--mono);font-size:7px;color:var(--dim);margin-top:2px">bp ' + m.bp + '°C</div>';
+                    card.onclick = (function(idx) {
+                        return function() {
+                            orgSelectMember(fid, idx);
+                        }
+                        ;
+                    }
+                    )(i);
+                    scroll.appendChild(card);
+                });
+                orgSelectMember(fid, 0);
+            }
+
+            function orgSelectMember(fid, idx) {
+                orgCurrentMember = idx;
+                var family = ORG_FAMILIES.find(function(f) {
+                    return f.id === fid;
+                });
+                if (!family)
+                    return;
+                var member = family.series[idx];
+                if (!member)
+                    return;
+                // Update series card selection
+                family.series.forEach(function(m, i) {
+                    var c = document.getElementById('orgser-' + fid + '-' + i);
+                    if (c)
+                        c.classList.toggle('active', i === idx);
+                });
+                // Draw structural SVG
+                var svgArea = document.getElementById('org-svg-area');
+                svgArea.innerHTML = orgDrawStructure(family, member);
+                // Props table
+                var props = document.getElementById('org-props-table');
+                props.innerHTML = [{
+                    l: 'Formula',
+                    v: member.sym
+                }, {
+                    l: 'Name',
+                    v: member.name
+                }, {
+                    l: 'Boiling pt',
+                    v: member.bp + '°C'
+                }, {
+                    l: 'State (20°C)',
+                    v: member.bp < 20 ? 'Gas (g)' : 'Liquid (l)'
+                }, {
+                    l: 'Uses',
+                    v: member.uses
+                }, {
+                    l: 'Family',
+                    v: family.name + ' (' + family.suffix + ')'
+                }, ].map(function(r) {
+                    return '<div class="org-prop-row"><span class="org-prop-label">' + r.l + '</span><span class="org-prop-val" style="color:' + family.col + '">' + r.v + '</span></div>';
+                }).join('');
+                // Reactions
+                var rxList = document.getElementById('org-reactions-list');
+                rxList.innerHTML = family.reactions.map(function(r) {
+                    return '<div class="org-rx-card"><div class="org-rx-card-title">' + r.title + '</div><div class="org-rx-card-eq">' + r.eq + '</div><div class="org-rx-card-obs">' + r.obs + '</div></div>';
+                }).join('');
+                // Naming box
+                var nb = document.getElementById('org-naming-box');
+                nb.innerHTML = '<div class="org-naming-box"><div class="org-naming-title">📚 NAMING RULES</div><div class="org-naming-rule">' + family.namingRule + '</div></div>';
+            }
+
+            function orgDrawStructure(family, member) {
+                // Draw a simplified structural formula as SVG
+                var n = member.n || 1;
+                var sym = member.sym;
+                var fid = family.id;
+                var col = family.col;
+                var W = 300
+                  , H = 150;
+                var svg = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" style="font-family:JetBrains Mono,monospace">';
+                // Background
+                svg += '<rect width="' + W + '" height="' + H + '" rx="8" fill="rgba(255,255,255,.025)" stroke="rgba(255,255,255,.06)" stroke-width="1"/>';
+                var cx = W / 2
+                  , cy = H / 2;
+                // Draw based on family
+                if (fid === 'alkanes' || fid === 'alkenes' || fid === 'alkynes' || fid === 'alcohols' || fid === 'carboxylic' || fid === 'aldehydes' || fid === 'ketones') {
+                    // Carbon chain
+                    var chainLen = Math.min(n, 6);
+                    var spacing = Math.min(42, (W - 60) / Math.max(chainLen - 1, 1));
+                    var startX = cx - (chainLen - 1) * spacing / 2;
+                    for (var i = 0; i < chainLen; i++) {
+                        var cx2 = startX + i * spacing
+                          , cy2 = cy;
+                        // Bond to previous
+                        if (i > 0) {
+                            var bondType = fid === 'alkenes' && i === 1 ? 'double' : fid === 'alkynes' && i === 1 ? 'triple' : 'single';
+                            if (bondType === 'double') {
+                                svg += '<line x1="' + (cx2 - spacing + 4) + '" y1="' + (cy2 - 3) + '" x2="' + (cx2 - 4) + '" y2="' + (cy2 - 3) + '" stroke="' + col + '" stroke-width="1.8"/>';
+                                svg += '<line x1="' + (cx2 - spacing + 4) + '" y1="' + (cy2 + 3) + '" x2="' + (cx2 - 4) + '" y2="' + (cy2 + 3) + '" stroke="' + col + '" stroke-width="1.8"/>';
+                            } else if (bondType === 'triple') {
+                                svg += '<line x1="' + (cx2 - spacing + 4) + '" y1="' + (cy2 - 4) + '" x2="' + (cx2 - 4) + '" y2="' + (cy2 - 4) + '" stroke="' + col + '" stroke-width="1.5"/>';
+                                svg += '<line x1="' + (cx2 - spacing + 4) + '" y1="' + (cy2) + '" x2="' + (cx2 - 4) + '" y2="' + (cy2) + '" stroke="' + col + '" stroke-width="1.5"/>';
+                                svg += '<line x1="' + (cx2 - spacing + 4) + '" y1="' + (cy2 + 4) + '" x2="' + (cx2 - 4) + '" y2="' + (cy2 + 4) + '" stroke="' + col + '" stroke-width="1.5"/>';
+                            } else {
+                                svg += '<line x1="' + (cx2 - spacing + 4) + '" y1="' + cy2 + '" x2="' + (cx2 - 4) + '" y2="' + cy2 + '" stroke="rgba(220,232,245,.55)" stroke-width="1.8"/>';
+                            }
+                            // H bonds top
+                            svg += '<line x1="' + cx2 + '" y1="' + cy2 + '" x2="' + cx2 + '" y2="' + (cy2 - 26) + '" stroke="rgba(220,232,245,.4)" stroke-width="1.5"/>';
+                            svg += '<text x="' + cx2 + '" y="' + (cy2 - 32) + '" text-anchor="middle" fill="rgba(121,192,255,.7)" font-size="9">H</text>';
+                            svg += '<line x1="' + cx2 + '" y1="' + cy2 + '" x2="' + cx2 + '" y2="' + (cy2 + 26) + '" stroke="rgba(220,232,245,.4)" stroke-width="1.5"/>';
+                            svg += '<text x="' + cx2 + '" y="' + (cy2 + 42) + '" text-anchor="middle" fill="rgba(121,192,255,.7)" font-size="9">H</text>';
+                        } else {
+                            // First C — 3H left
+                            svg += '<line x1="' + cx2 + '" y1="' + cy2 + '" x2="' + (cx2 - 24) + '" y2="' + cy2 + '" stroke="rgba(220,232,245,.4)" stroke-width="1.5"/>';
+                            svg += '<text x="' + (cx2 - 34) + '" y="' + (cy2 + 4) + '" fill="rgba(121,192,255,.7)" font-size="9">H</text>';
+                            svg += '<line x1="' + cx2 + '" y1="' + cy2 + '" x2="' + cx2 + '" y2="' + (cy2 - 26) + '" stroke="rgba(220,232,245,.4)" stroke-width="1.5"/>';
+                            svg += '<text x="' + cx2 + '" y="' + (cy2 - 32) + '" text-anchor="middle" fill="rgba(121,192,255,.7)" font-size="9">H</text>';
+                            svg += '<line x1="' + cx2 + '" y1="' + cy2 + '" x2="' + cx2 + '" y2="' + (cy2 + 26) + '" stroke="rgba(220,232,245,.4)" stroke-width="1.5"/>';
+                            svg += '<text x="' + cx2 + '" y="' + (cy2 + 42) + '" text-anchor="middle" fill="rgba(121,192,255,.7)" font-size="9">H</text>';
+                        }
+                        // Carbon circle
+                        svg += '<circle cx="' + cx2 + '" cy="' + cy2 + '" r="14" fill="rgba(148,163,184,.15)" stroke="' + col + '" stroke-width="1.5"/>';
+                        svg += '<text x="' + cx2 + '" y="' + (cy2 + 4) + '" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="700">C</text>';
+                    }
+                    // Last C: terminal groups
+                    var lastX = startX + (chainLen - 1) * spacing;
+                    if (fid === 'alcohols') {
+                        // -OH terminal
+                        svg += '<line x1="' + (lastX + 14) + '" y1="' + cy + '" x2="' + (lastX + 32) + '" y2="' + cy + '" stroke="' + col + '" stroke-width="2"/>';
+                        svg += '<circle cx="' + (lastX + 44) + '" cy="' + cy + '" r="12" fill="rgba(167,139,250,.15)" stroke="' + col + '" stroke-width="1.5"/>';
+                        svg += '<text x="' + (lastX + 44) + '" y="' + (cy + 4) + '" text-anchor="middle" fill="' + col + '" font-size="9" font-weight="700">OH</text>';
+                        svg += '<line x1="' + (lastX) + '" y1="' + cy + '" x2="' + lastX + '" y2="' + (cy - 26) + '" stroke="rgba(220,232,245,.4)" stroke-width="1.5"/>';
+                        svg += '<text x="' + lastX + '" y="' + (cy - 32) + '" text-anchor="middle" fill="rgba(121,192,255,.7)" font-size="9">H</text>';
+                    } else if (fid === 'carboxylic') {
+                        // -COOH terminal (already the last C is the COOH C)
+                        svg += '<line x1="' + (lastX + 14) + '" y1="' + cy + '" x2="' + (lastX + 32) + '" y2="' + cy + '" stroke="rgba(220,232,245,.4)" stroke-width="1.5"/>';
+                        svg += '<text x="' + (lastX + 48) + '" y="' + (cy + 4) + '" fill="#fbbf24" font-size="9" font-weight="700">COOH</text>';
+                    } else if (fid === 'aldehydes') {
+                        svg += '<line x1="' + (lastX + 14) + '" y1="' + cy + '" x2="' + (lastX + 30) + '" y2="' + cy + '" stroke="rgba(220,232,245,.4)" stroke-width="1.5"/>';
+                        svg += '<text x="' + (lastX + 46) + '" y="' + (cy + 4) + '" fill="#f87171" font-size="9" font-weight="700">CHO</text>';
+                    } else {
+                        // Terminal H
+                        svg += '<line x1="' + (lastX + 14) + '" y1="' + cy + '" x2="' + (lastX + 30) + '" y2="' + cy + '" stroke="rgba(220,232,245,.4)" stroke-width="1.5"/>';
+                        svg += '<text x="' + (lastX + 40) + '" y="' + (cy + 4) + '" fill="rgba(121,192,255,.7)" font-size="9">H</text>';
+                    }
+                } else {
+                    // Generic: just show formula
+                    svg += '<text x="' + cx + '" y="' + (cy + 6) + '" text-anchor="middle" fill="' + col + '" font-size="16" font-weight="700">' + member.sym + '</text>';
+                }
+                // Formula label
+                svg += '<text x="' + cx + '" y="' + (H - 10) + '" text-anchor="middle" fill="rgba(255,255,255,.3)" font-size="7">Structural formula (simplified 2D)</text>';
+                svg += '</svg>';
+                return svg;
             }
         </script>
         <!-- QUIZ OVERLAY -->
